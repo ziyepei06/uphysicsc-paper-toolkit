@@ -13,7 +13,7 @@ SUBMIT  := $(TEAM)$(PROBLEM).pdf
 SKILL   ?= ../..
 LATEXMK_FLAGS := -pdf -interaction=nonstopmode -halt-on-error -file-line-error -synctex=1
 
-.PHONY: all build check words figs pdf clean
+.PHONY: all build check words figs pdf demo clean
 
 all: build check
 
@@ -30,6 +30,11 @@ words:
 
 figs:
 	python3 scripts/make_example_fig.py
+
+# Rebuild the sample PDF with the AI-disclosure section visible.
+# Your own builds follow config.tex, where the switch is off.
+demo:
+	latexmk $(LATEXMK_FLAGS) -g -usepretex='\def\AIREPORTDEMO{}' $(MAIN)
 
 pdf: check
 	cp main.pdf $(SUBMIT)

@@ -20,3 +20,7 @@
 %% no such tool was used: do not add a paragraph saying so.
 \newif\ifaiused
 \aiusedfalse
+%% The shipped sample 000A.pdf is built with `make demo`, which defines
+%% \AIREPORTDEMO so that the section is visible; your own builds follow the
+%% line above and omit it until you switch it on.
+\ifdefined\AIREPORTDEMO \aiusedtrue \fi

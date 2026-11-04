@@ -12,7 +12,7 @@ PROBLEM := $(shell sed -n 's/^\\newcommand{\\problemltr}{\([^}]*\)}.*/\1/p' conf
 SUBMIT  := $(TEAM)$(PROBLEM).pdf
 LATEXMK_FLAGS := -pdf -interaction=nonstopmode -halt-on-error -file-line-error -synctex=1
 
-.PHONY: all build check words figs pdf clean
+.PHONY: all build check words figs pdf demo clean
 
 all: build check
 
@@ -28,6 +28,13 @@ words:
 
 figs:
 	python3 scripts/make_example_fig.py
+
+# Rebuild the committed sample 000A.pdf with the AI-disclosure section visible.
+# Your own builds use config.tex, where the switch is off.
+demo:
+	latexmk $(LATEXMK_FLAGS) -g -usepretex='\def\AIREPORTDEMO{}' $(MAIN)
+	cp main.pdf 000A.pdf
+	@echo "wrote 000A.pdf (AI section on)"
 
 pdf: all
 	cp main.pdf $(SUBMIT)

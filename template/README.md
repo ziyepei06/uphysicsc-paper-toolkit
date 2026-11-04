@@ -114,6 +114,11 @@ Replacing the content:
 is the correct state when no generative tool was used, and the reason you must
 not add a "no AI was used" paragraph.
 
+The committed sample `000A.pdf` is built with `make demo`, which defines
+`\AIREPORTDEMO` on the command line so the section appears; that is how you can
+see what a finished disclosure looks like. Your own `make` follows `config.tex`
+and stays silent until you flip the switch.
+
 Turn it on if an assistant touched the text, the code, the figures or the
 analysis. The section follows the official rule in order: a table of systems
 (version, date, interface, purpose), a statement of what was done without AI,
