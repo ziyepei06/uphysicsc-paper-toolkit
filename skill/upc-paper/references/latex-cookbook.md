@@ -47,6 +47,12 @@ m\,s$^{-1}$     % avoid: loose minus
 `\SI` argument. Use it for every unit exponent of minus one; leave real exponents
 such as `10^{-4}` alone.
 
+The template also lowers the script size to 64 % of the body
+(`\DeclareMathSizes{10.95}{10.95}{7}{5}`, plus a 12 pt variant), because the
+default 73 % makes a superscript `-1` look almost as tall as the unit letter.
+If you change the class option to `12pt`, the second declaration takes over; keep
+both so the ratio stays at 64 %.
+
 ## 3. Equations
 
 ```latex

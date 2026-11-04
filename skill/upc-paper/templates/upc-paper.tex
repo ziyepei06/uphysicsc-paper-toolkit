@@ -26,6 +26,12 @@
 \usepackage{siunitx}
 \sisetup{detect-all,per-mode=symbol,exponent-product=\times}
 
+% Superscripts default to 8 pt against 12 pt body (67 %), which makes unit
+% exponents such as s^{-1} look heavy; 64 % is easier next to the letters.
+\DeclareMathSizes{12}{12}{7.8}{5.6}
+% Compact negative exponent for units: "m s\inv" instead of a loose "m s - 1".
+\newcommand{\inv}{\ensuremath{^{\!-\!1}}}
+
 % ---------- floats, tables, figures ----------------------------------
 \usepackage{graphicx}
 \usepackage{booktabs}

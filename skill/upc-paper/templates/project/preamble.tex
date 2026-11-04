@@ -84,6 +84,13 @@
 \newcommand{\ii}{\mathrm{i}}
 \newcommand{\vect}[1]{\bm{#1}}
 \newcommand{\order}[1]{\mathcal{O}\!\left(#1\right)}
+% --- superscript size --------------------------------------------------
+% The default script size (8 pt against 11 pt body, 73 %) makes unit
+% exponents such as s^{-1} look heavy next to the base letters.  Set the
+% first level to 64 % and the second to 46 %.
+\DeclareMathSizes{10.95}{10.95}{7}{5}   % 11 pt body (this template)
+\DeclareMathSizes{12}{12}{7.8}{5.6}     % if you switch to 12 pt
+
 % Compact negative exponent for units: \inv gives ^{-1} with the spaces on
 % both sides of the minus removed, so "m s\inv" sets as m s^-1 instead of
 % the loose "m s - 1" that a plain ^{-1} produces at script size.
