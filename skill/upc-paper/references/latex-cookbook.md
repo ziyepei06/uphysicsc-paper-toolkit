@@ -51,6 +51,19 @@ the PDF stays searchable and copy-pasteable (`$`-based rules would not). Use it
 for every unit exponent of minus one; leave real exponents such as `10^{-4}`
 alone.
 
+Products of units are separated by a thin space, never written solid: `ms`
+is a millisecond, `m s` is a metre times a second. ISO 80000-1 allows either a
+space or a half-high dot. siunitx's default is `inter-unit-product = \,`, and the
+hand-written units in the notation table use the same `\,`, so the paper is
+consistent. If you prefer dots, set it once and never mix:
+
+```latex
+\sisetup{inter-unit-product=\cdot}   % 1.2 kg · m^-3, a little wide
+```
+
+Do not reach for `\textperiodcentered` with T1 fonts: the glyph extracts as a
+wrong character and breaks copy-paste and search.
+
 The template also lowers the script size to 64 % of the body
 (`\DeclareMathSizes{10.95}{10.95}{7}{5}`, plus a 12 pt variant), because the
 default 73 % makes a superscript `-1` look almost as tall as the unit letter.
