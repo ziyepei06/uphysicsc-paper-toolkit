@@ -1,25 +1,12 @@
 # UPC paper template — standalone LaTeX project
 
+**English** | [中文](README.zh-CN.md)
+
 A working paper, not an empty shell: it compiles to 13 pages, passes the
 built-in checks, and carries a complete worked example (a hull-breach
 blow-down problem) whose numbers come from the code in `code/`. Replace
 the content, keep the structure. Everything needed is inside this folder —
 no external skill, no extra paths.
-
-## 快速开始
-
-```bash
-cd UPC-LaTeX-Template
-make                # 编译并跑合规检查（队号、摘要词数、参考文献等）
-make pdf            # 生成交稿文件名，如 000A.pdf
-```
-
-目录里已经带了一份编译好的 `000A.pdf`（14 页，含 AI 使用报告）可以先看效果；重新编译会覆盖
-`main.pdf`，`make pdf` 会生成 `000A.pdf`。
-
-改三处即可开写：`config.tex`（队号/题号/标题）、`sections/00-frontmatter.tex`
-（Abstract/Summary）、`sections/01`–`09`（正文）。所有章节已按金牌论文的结构排好，
-每节开头有 `%% GUIDE` 注释说明该写什么。
 
 ## Quick start
 
@@ -31,6 +18,9 @@ python3 scripts/make_example_fig.py     # regenerate figures/example.pdf
 bash tools/build.sh main.tex            # compile only, with the log gate
 ```
 
+The folder ships with a compiled `000A.pdf` to flip through first; your own
+`make` rebuilds `main.pdf`, and `make pdf` copies it to `000A.pdf`.
+
 Without `make` (Windows, or no GNU make):
 
 ```bash
@@ -38,6 +28,10 @@ bash tools/build.sh main.tex
 python3 tools/check_pdf.py main.pdf --team 000 --problem A
 python3 tools/count_summary.py main.tex --tex
 ```
+
+Three edits and you are writing: `config.tex` (team, problem, title),
+`sections/00-frontmatter.tex` (the summary) and `sections/01`–`09` (the body).
+Every section file opens with a `%% GUIDE` comment saying what belongs there.
 
 ## File map
 
@@ -114,10 +108,10 @@ Replacing the content:
 is the correct state when no generative tool was used, and the reason you must
 not add a "no AI was used" paragraph.
 
-The committed sample `000A.pdf` is built with `make demo`, which defines
-`\AIREPORTDEMO` on the command line so the section appears; that is how you can
-see what a finished disclosure looks like. Your own `make` follows `config.tex`
-and stays silent until you flip the switch.
+The committed sample `000A.pdf` is 14 pages because it is built with `make demo`,
+which defines `\AIREPORTDEMO` on the command line so the section appears; that
+is how you can see what a finished disclosure looks like. Your own `make`
+follows `config.tex` and stays silent until you flip the switch.
 
 Turn it on if an assistant touched the text, the code, the figures or the
 analysis. The section follows the official rule in order: a table of systems
