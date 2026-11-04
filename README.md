@@ -27,8 +27,8 @@ the assumptions, the answers, and the uncertainty in the first two minutes.
 | `docs/` | Rendered pages used in this README |
 
 `template/` is the same project as `skill/upc-paper/templates/project`, with
-its own `tools/` and a Makefile that does not depend on the skill being
-installed; the skill keeps its copy so it works on its own. If you edit one,
+its own `tools/` and a Makefile that does not depend on where the skill sits;
+the skill keeps its copy so it works on its own. If you edit one,
 copy the change to the other — `git diff` between the two directories is
 short.
 
@@ -45,8 +45,8 @@ cd uphysicsc-paper-toolkit && git sparse-checkout set skill template
 
 ## The template
 
-Requirements: a TeX distribution with `latexmk` (TeX Live or MacTeX) and
-Python 3 with PyMuPDF (`pip install pymupdf`).
+Requirements: `latexmk` from any TeX distribution, and Python 3 with PyMuPDF
+for the two checker scripts. If an import fails the checker says which one.
 
 ```bash
 cd template
@@ -85,21 +85,11 @@ appearance, three-line tables, and an answer box for each question.
 
 ## The skill
 
-A skill is a directory an agent reads, so installing it is a copy:
-
-```bash
-mkdir -p ~/.claude/skills
-
-# from a clone: symlink, so git pull updates the skill as well
-ln -sfn "$PWD/skill/upc-paper" ~/.claude/skills/upc-paper
-
-# from the release archive: copy, replacing an earlier install
-rm -rf ~/.claude/skills/upc-paper && cp -R upc-paper ~/.claude/skills/
-```
-
-Codex and other agents read `~/.agents/skills/` instead; the command is the
-same. Once the directory is there, the agent picks it up and has the rules in
-hand.
+`skill/upc-paper/` is plain Markdown, a LaTeX template and three scripts —
+no build step, no package to install. Hand the folder (or `upc-paper-skill.zip`
+from the release) to your agent and say what you want it to do; the entry
+point is `SKILL.md`, and every file it links to sits beside it. If your agent
+needs the skill in a particular directory, it knows where that is.
 
 The skill is deliberately opinionated:
 
@@ -151,12 +141,6 @@ it prints 285.5 s, the paper quotes 286 s, and the ±12 % error budget says
 why the third digit is not worth defending. If you change the model, the
 numbers change with it; there is no place where the text and the code can
 silently disagree.
-
-## Requirements
-
-- TeX Live 2023+ or MacTeX (XeLaTeX not needed; pdfLaTeX is enough)
-- Python 3.9+ with PyMuPDF, NumPy, Matplotlib
-- `make` (optional; `tools/build.sh` does the same without it)
 
 ## Licence and credits
 

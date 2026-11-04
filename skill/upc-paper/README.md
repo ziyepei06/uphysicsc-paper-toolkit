@@ -8,40 +8,38 @@ A single, self-contained skill that teaches an agent (or a person) how to write,
 - **scripts** that build with a log gate, check the PDF for compliance, and count the summary;
 - **reference chapters** on writing, figures, numbers, LaTeX, judging and the 48-hour schedule.
 
-## Install
+## Using it
 
-The skill is a directory of Markdown files plus a template and three scripts. Nothing to compile, no package manager.
+Nothing to install by hand. The skill is a directory of Markdown files, a
+LaTeX template and three scripts; hand it to your agent — as a folder, or as
+`upc-paper-skill.zip` from the release — and say "set this up and use it for
+our paper". The agent reads `SKILL.md`, puts the folder wherever its runtime
+loads skills from, and works from there.
 
-### As an agent skill
+The entry point is `SKILL.md`: frontmatter gives the name and the trigger
+description, the body gives the quick start, the file map and the
+non-negotiables.
 
-Copy or symlink the whole `upc-paper/` directory where your runtime looks for skills:
+### Without an agent
 
-| Runtime | Location |
-|---|---|
-| Claude Code | `~/.claude/skills/upc-paper/` (or `.claude/skills/` inside a project) |
-| Codex / DeepSeek Harness | `~/.agents/skills/upc-paper/` or the project's `skills/` directory |
-| Anything that reads Markdown | point the agent at `SKILL.md` and let it follow the links |
+Read `SKILL.md`, then work through `references/` in this order:
+`official-rules.md` → `layout-conventions.md` → `writing-patterns.md` →
+`latex-cookbook.md` → `figures-guide.md` → `numbers-and-units.md` →
+`timeline-and-roles.md` → `judging.md`, with `exemplars.md` open in a second
+window.
 
-```bash
-cp -R upc-paper ~/.claude/skills/
-```
+## What the scripts need
 
-The entry point is `SKILL.md`: frontmatter gives the name and the trigger description, the body gives the quick start, the file map and the non-negotiables.
-
-### Without an agent runtime
-
-Read `SKILL.md`, then work through `references/` in this order: `official-rules.md` → `layout-conventions.md` → `writing-patterns.md` → `latex-cookbook.md` → `figures-guide.md` → `numbers-and-units.md` → `timeline-and-roles.md` → `judging.md`, with `exemplars.md` open in a second window.
-
-## Requirements
-
-- A TeX distribution with `latexmk`, `pdflatex`, `booktabs`, `siunitx`, `caption`, `listings` (TeX Live 2022+ or MacTeX works; the template was tested with the 2025 TeX Live).
-- Python 3.9+ with PyMuPDF for the PDF checks: `python3 -m pip install --user pymupdf`.
+- `latexmk` and `pdflatex` from any TeX distribution, with `booktabs`,
+  `siunitx`, `caption`, `listings`, `tocloft`.
+- Python 3.9+ with PyMuPDF for the PDF checks; the checker prints the one
+  import that failed and nothing else is fetched at run time.
 - Optional: matplotlib for the example figure.
 
 ## Use in one minute
 
 ```bash
-cd upc-paper
+cd /path/to/upc-paper          # wherever the skill lives
 bash scripts/new_paper.sh 204 B "Evacuation from a Breached Station"   # creates ./204B/
 cd 204B && make                                                        # compile + checks
 make pdf                                                               # 204B.pdf
