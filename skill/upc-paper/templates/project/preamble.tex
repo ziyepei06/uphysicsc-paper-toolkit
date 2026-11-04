@@ -84,6 +84,11 @@
 \newcommand{\ii}{\mathrm{i}}
 \newcommand{\vect}[1]{\bm{#1}}
 \newcommand{\order}[1]{\mathcal{O}\!\left(#1\right)}
+% Compact negative exponent for units: \inv gives ^{-1} with the spaces on
+% both sides of the minus removed, so "m s\inv" sets as m s^-1 instead of
+% the loose "m s - 1" that a plain ^{-1} produces at script size.
+\newcommand{\inv}{\ensuremath{^{\!-\!1}}}
+
 % siunitx v3 provides \qty and \unit already -- do not redefine them.
 
 % ---------- section spacing tuned for 20-28 page papers --------------

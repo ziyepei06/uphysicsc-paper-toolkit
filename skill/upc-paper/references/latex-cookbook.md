@@ -33,6 +33,20 @@ Order matters: `hyperref` goes last (with a few exceptions such as `cleveref`, w
 
 Never hand-write `$9.81\,m/s^2$` — the italic *m* is wrong for a unit. Use `S` columns to align decimals in tables.
 
+For silent-area units written by hand (a notation table, an axis label), `^{-1}`
+sets far too loosely at script size: the math minus keeps its full advance, so
+`m\,s$^{-1}$` reads as "m s - 1". The preamble defines `\inv` for exactly this:
+
+```latex
+m\,s\inv        % m s⁻¹, compact
+kg\inv\,K\inv   % good
+m\,s$^{-1}$     % avoid: loose minus
+```
+
+`\inv` is `\ensuremath{^{\!-\!1}}`, so it also works inside math and inside a
+`\SI` argument. Use it for every unit exponent of minus one; leave real exponents
+such as `10^{-4}` alone.
+
 ## 3. Equations
 
 ```latex
