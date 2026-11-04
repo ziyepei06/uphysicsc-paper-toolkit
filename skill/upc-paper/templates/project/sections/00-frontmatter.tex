@@ -8,24 +8,39 @@
 %%  consistent with code/blowdown.py. Replace them with your own problem.
 %% =====================================================================
 \begin{titlepage}
-\thispagestyle{plain}
-\centering
-\vspace*{1.0cm}
-
-{\LARGE\bfseries Team \teamnum}\\[0.5cm]
-{\LARGE\bfseries Problem \problemltr}\\[1.2cm]
-
-{\huge\bfseries \papertitle}\\[1.4cm]
-
-\begin{minipage}{0.92\textwidth}
-\section*{Summary}
+%%  Layout after the MCM/ICM summary sheet (github.com/latexstudio-org/mcmthesis):
+%%  the two identifiers sit in opposite corners of a ruled band, the title takes
+%%  the optical centre, the summary follows. No running head on this page, so
+%%  nothing competes with the four items.
+\thispagestyle{empty}
+\vspace*{0.6cm}
 \noindent
-%% GUIDE (delete this block when writing):
-%%  S1  30-50 words  situation and goal, one sentence
-%%  S2  60-90 words  model + the 2-3 assumptions that carry it
-%%  S3 100-140 words answers to every question, with numbers and units
-%%  S4  50-70 words  what it was validated against, main uncertainty
-%%  Count before submitting: python3 scripts/count_summary.py main.tex --tex
+\begin{minipage}[t]{0.45\textwidth}
+  \raggedright
+  {\scshape Problem}\\[0.4em]{\Large\bfseries\problemltr}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.45\textwidth}
+  \raggedleft
+  {\scshape Team}\\[0.4em]{\Large\bfseries\teamnum}
+\end{minipage}\par
+
+\vspace{1.1em}
+\noindent\rule{\textwidth}{0.6pt}\par
+\vspace{1.7em}
+
+{\centering
+  {\LARGE\bfseries\setstretch{1.12}\papertitle\par}
+  \vspace{1.5em}
+  {\large\scshape Summary}\par
+}
+\vspace{0.9em}
+
+%%  A 200-300 word block at full width reads as a wall; the small inset gives
+%%  it a measure of about 80 characters and marks it as a separate element.
+{\setlength{\leftskip}{0.05\textwidth}%
+ \setlength{\rightskip}{0.05\textwidth}%
+ \setlength{\parindent}{0pt}%
+ \setstretch{1.04}%
 A hull breach vents a crewed module in minutes, and the time available
 decides whether the crew can seal it. We model the blow-down as a
 quasi-steady discharge of an ideal gas through a sharp-edged orifice,
@@ -43,7 +58,7 @@ at the nominal diameter and by \SI{5}{\percent} at \SI{5}{cm}. The answer
 carries $\pm\SI{12}{\percent}$, dominated by the hole diameter rather than
 by the model; a bench measurement of that one length would tighten the
 result more than any refinement of the physics.
-\end{minipage}
+\par}
 
 \vfill
 \end{titlepage}
