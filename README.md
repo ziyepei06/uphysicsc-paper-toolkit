@@ -1,4 +1,8 @@
-# UPC Paper Toolkit
+# University Physics Competition — Paper Toolkit
+
+> "UPC" here is the [University Physics Competition](http://uphysicsc.com) (48 hours,
+> two problems, one paper). It is **not** the Universitat Politècnica de Catalunya,
+> which owns most of the other `UPC-*` LaTeX repositories on GitHub.
 
 Everything a University Physics Competition team needs to write the paper:
 a **LaTeX project template** that already compiles, and an **agent skill**
