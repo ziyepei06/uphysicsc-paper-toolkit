@@ -1,5 +1,7 @@
 # University Physics Competition — Paper Toolkit
 
+![University Physics Competition — paper toolkit](docs/cover.png)
+
 > "UPC" here is the [University Physics Competition](http://uphysicsc.com) (48 hours,
 > two problems, one paper). It is **not** the Universitat Politècnica de Catalunya,
 > which owns most of the other `UPC-*` LaTeX repositories on GitHub.
