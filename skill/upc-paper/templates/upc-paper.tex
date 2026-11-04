@@ -29,8 +29,15 @@
 % Superscripts default to 8 pt against 12 pt body (67 %), which makes unit
 % exponents such as s^{-1} look heavy; 64 % is easier next to the letters.
 \DeclareMathSizes{12}{12}{7.8}{5.6}
-% Compact negative exponent for units: "m s\inv" instead of a loose "m s - 1".
-\newcommand{\inv}{\ensuremath{^{\!-\!1}}}
+% Compact negative exponent for units: \inv gives ^{-1} with the spaces on
+% both sides of the minus removed, so "m s\inv" sets as m s^-1 instead of
+% the loose "m s - 1" that a plain ^{-1} produces at script size.
+% Compact negative exponent for units: the math minus keeps its full
+% advance at script size, so a plain ^{-1} sets as a long dash floating away
+% from the digit.  \inv scales the minus horizontally to 65 %, keeps it on the
+% script axis and closes the spacing, so "m s\inv" reads as m s^-1 while the
+% PDF still contains a real minus character.
+\newcommand{\inv}{\textsuperscript{\scalebox{0.65}[1]{$-$}1}}
 
 % ---------- floats, tables, figures ----------------------------------
 \usepackage{graphicx}

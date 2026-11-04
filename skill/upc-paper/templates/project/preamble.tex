@@ -94,7 +94,12 @@
 % Compact negative exponent for units: \inv gives ^{-1} with the spaces on
 % both sides of the minus removed, so "m s\inv" sets as m s^-1 instead of
 % the loose "m s - 1" that a plain ^{-1} produces at script size.
-\newcommand{\inv}{\ensuremath{^{\!-\!1}}}
+% Compact negative exponent for units: the math minus keeps its full
+% advance at script size, so a plain ^{-1} sets as a long dash floating away
+% from the digit.  \inv scales the minus horizontally to 65 %, keeps it on the
+% script axis and closes the spacing, so "m s\inv" reads as m s^-1 while the
+% PDF still contains a real minus character.
+\newcommand{\inv}{\textsuperscript{\scalebox{0.65}[1]{$-$}1}}
 
 % siunitx v3 provides \qty and \unit already -- do not redefine them.
 

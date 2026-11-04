@@ -33,19 +33,23 @@ Order matters: `hyperref` goes last (with a few exceptions such as `cleveref`, w
 
 Never hand-write `$9.81\,m/s^2$` — the italic *m* is wrong for a unit. Use `S` columns to align decimals in tables.
 
-For silent-area units written by hand (a notation table, an axis label), `^{-1}`
-sets far too loosely at script size: the math minus keeps its full advance, so
-`m\,s$^{-1}$` reads as "m s - 1". The preamble defines `\inv` for exactly this:
+For units written by hand (a notation table, an axis label), `^{-1}` is wrong
+twice over: the math minus keeps its full advance, so it reads as a long dash
+floating away from the digit, and at 73 % script size it dwarfs the unit letter.
+The preamble defines `\inv` for this:
 
 ```latex
-m\,s\inv        % m s⁻¹, compact
+m\,s\inv        % m s⁻¹, short minus, script size
 kg\inv\,K\inv   % good
-m\,s$^{-1}$     % avoid: loose minus
+m\,s$^{-1}$     % avoid: long minus, loose spacing
 ```
 
-`\inv` is `\ensuremath{^{\!-\!1}}`, so it also works inside math and inside a
-`\SI` argument. Use it for every unit exponent of minus one; leave real exponents
-such as `10^{-4}` alone.
+`\inv` is `\textsuperscript{\scalebox{0.65}[1]{$-$}1}`: the minus is squeezed
+horizontally to 65 %, kept on the script axis, and set at the script size so it
+sits comfortably next to the digit. It still typesets a real minus character, so
+the PDF stays searchable and copy-pasteable (`$`-based rules would not). Use it
+for every unit exponent of minus one; leave real exponents such as `10^{-4}`
+alone.
 
 The template also lowers the script size to 64 % of the body
 (`\DeclareMathSizes{10.95}{10.95}{7}{5}`, plus a 12 pt variant), because the
