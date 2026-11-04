@@ -45,10 +45,21 @@
 % ---------- lists, code, links ---------------------------------------
 \usepackage{enumitem}
 \setlist{itemsep=2pt,topsep=3pt,parsep=0pt}
+\usepackage{xcolor}
 \usepackage{listings}
+% Dark, saturated syntax colours. Pastel themes wash out on paper and in
+% photocopies; these stay deep enough to print, while the keyword weight
+% (bold) keeps the structure readable when the PDF is printed in greyscale.
+\definecolor{codekw}{HTML}{1A5FB4}   % strong blue: keywords
+\definecolor{codecm}{HTML}{2E7D32}   % strong green: comments
+\definecolor{codestr}{HTML}{A63A1E}  % rust: strings
+\definecolor{codenum}{HTML}{555555}  % grey: line numbers
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,frame=single,
-        numbers=left,numberstyle=\tiny,columns=fullflexible,
-        captionpos=b,showstringspaces=false}
+        numbers=left,numberstyle=\tiny\color{codenum},columns=fullflexible,
+        captionpos=b,showstringspaces=false,
+        keywordstyle=\color{codekw}\bfseries,
+        commentstyle=\color{codecm}\itshape,
+        stringstyle=\color{codestr}}
 % ---------- verbatim blocks for the AI report ------------------------
 % Prompts and model outputs are pasted as-is; lstlisting keeps characters
 % such as _, %, \ and { from breaking the build.
@@ -57,7 +68,6 @@
         showstringspaces=false,xleftmargin=1.2em,framesep=4pt,
         aboveskip=0.4em,belowskip=0.8em}
 
-\usepackage{xcolor}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,
             urlcolor=blue!50!black]{hyperref}

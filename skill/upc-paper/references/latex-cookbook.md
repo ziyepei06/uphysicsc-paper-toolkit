@@ -70,6 +70,28 @@ default 73 % makes a superscript `-1` look almost as tall as the unit letter.
 If you change the class option to `12pt`, the second declaration takes over; keep
 both so the ratio stays at 64 %.
 
+### Syntax colour in listings
+
+`preamble.tex` defines four dark, saturated colours and applies them with a
+single `\lstset`, so every listing and every `\lstinputlisting` is styled the
+same way:
+
+```latex
+\definecolor{codekw}{HTML}{1A5FB4}   % strong blue: keywords (bold)
+\definecolor{codecm}{HTML}{2E7D32}   % strong green: comments (italic)
+\definecolor{codestr}{HTML}{A63A1E}  % rust: strings
+\definecolor{codenum}{HTML}{555555}  % grey: line numbers
+\lstset{keywordstyle=\color{codekw}\bfseries,
+        commentstyle=\color{codecm}\itshape,
+        stringstyle=\color{codestr}, ...}
+```
+
+Pastel themes (the common "light" Pygments palettes) fade to nothing on paper
+and disappear in photocopies. These tones stay dark enough to print, and the
+bold keywords still carry the structure if the page is printed in greyscale.
+Only 14 of the 74 gold papers colour their code at all; plain monospace with
+line numbers is equally acceptable, so do not spend the 48 hours here.
+
 ## 3. Equations
 
 ```latex
