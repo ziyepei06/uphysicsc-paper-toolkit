@@ -49,6 +49,11 @@ The cleanest skeleton in the corpus: `2020/2020-GM-A-354.pdf` — 1 Notations �
 
 Shared features across all 74: team number, problem letter, title, summary — and nothing else decorative. Three common layouts:
 
+- **Keyword line.** 26 of the 74 gold papers print `Keywords:` under the
+  abstract, but the practice is recent: 1 in 2019, 5 of 7 in 2022, 6 of 9 in
+  2023, 13 of 16 in 2025. The rule says page 1 holds only four items, so this
+  is the one addition a strict reader could call extra; the template ships it
+  because 2025 winners do, and `\keywordsfalse` removes it in one line.
 - **Contents page.** 50 of the 74 gold papers (68 %) print a Contents page
   right after the summary sheet; it is not required, but it is normal for a
   20-page paper and cheap to produce. The template ships

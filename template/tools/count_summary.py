@@ -29,6 +29,22 @@ def strip_latex(s: str) -> str:
     return s
 
 
+def without_keywords(text: str) -> str:
+    """Drop the keyword line: it sits under the abstract but is not part of
+    the 300-word limit (the rule counts the summary; keywords are a label)."""
+    keep, skipping = [], False
+    for line in text.splitlines():
+        if re.match(r"(?i)^\s*(?:\\noindent\s*)?(?:\\textbf\{)?key\s*words?\s*:", line):
+            skipping = True
+            continue
+        if skipping:
+            if not line.strip():
+                skipping = False
+            continue
+        keep.append(line)
+    return "\n".join(keep)
+
+
 def words(text: str) -> int:
     return len([w for w in re.split(r"\s+", text.strip()) if re.search(r"[A-Za-z0-9]", w)])
 
@@ -75,7 +91,9 @@ def from_tex(path: str) -> str:
             # the summary sheet sets its measure right after the heading; those
             # arguments are not prose and must not be counted
             body = re.sub(r"\\(?:setlength|setstretch|addtolength)\{[^{}]*\}\{[^{}]*\}", " ", body)
-            return strip_latex(body)
+            body = re.sub(r"\\[vh]space\*?\{[^{}]*\}", " ", body)
+            body = re.sub(r"\\(?:setstretch|fontsize|vskip)\s*\{[^{}]*\}", " ", body)
+            return strip_latex(without_keywords(body))
     sys.exit("could not find a Summary/Abstract block in " + path)
 
 
@@ -93,7 +111,7 @@ def from_pdf(path: str) -> str:
     lines = [ln for ln in body.splitlines()
              if not re.match(r"(?i)^\s*(team\s*\d+|problem\s*[ab])\s*$", ln)
              and not re.match(r"^\s*\d{1,3}\s*$", ln)]
-    return "\n".join(lines)
+    return without_keywords("\n".join(lines))
 
 
 def main() -> int:

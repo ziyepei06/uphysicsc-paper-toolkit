@@ -4,7 +4,7 @@
 %%  UPC requires page 1 to hold exactly four items: team number, problem
 %%  letter, title, summary. The contest rules also forbid names, school
 %%  names and any identifying mark anywhere in the paper -- so keep this
-%%  file to these three lines and nothing else.
+%%  file to these lines and nothing else.
 %%
 %%  Only the team lead edits this file. Everyone else \input's it.
 %% =====================================================================
@@ -12,6 +12,15 @@
 \newcommand{\teamnum}{000}        % e.g. 204
 \newcommand{\problemltr}{A}       % A or B
 \newcommand{\papertitle}{Full Paper Title Written in Title Case}
+
+%% ---- keywords -------------------------------------------------------
+%% 26 of the 74 gold papers print a keyword line under the abstract, and
+%% 13 of the 16 in 2025 do -- it is becoming standard, even though the rule
+%% says page 1 holds only four items. \keywordsfalse drops the line.
+\newif\ifkeywords
+\keywordstrue
+\newcommand{\keywords}{breach venting, quasi-steady discharge, choked flow,
+  discharge coefficient}
 
 %% ---- AI disclosure --------------------------------------------------
 %% Set \aiusedtrue if any generative AI tool influenced the text, the code,
