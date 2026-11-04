@@ -60,8 +60,19 @@
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,frame=single,
         numbers=left,numberstyle=\tiny,columns=fullflexible}
 \usepackage{xcolor}
-\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,
-            urlcolor=blue!50!black]{hyperref}
+\usepackage{tocloft}
+\setcounter{tocdepth}{2}
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\cfttoctitlefont}{\large\bfseries}
+\renewcommand{\cftaftertoctitle}{\par\vspace{0.4em}\hrule\vspace{0.8em}}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsecpagefont}{\bfseries}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftdotsep}{1.2}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,
+            urlcolor=blue!45!black]{hyperref}
 
 % ---------- running head: TEAM NUMBER ON EVERY PAGE ------------------
 \usepackage{fancyhdr}
@@ -98,21 +109,40 @@
 % PAGE 1 -- exactly four items. Nothing else. No names, no school.
 % =====================================================================
 \begin{titlepage}
-\thispagestyle{plain}
-\centering
-\vspace*{1.2cm}
+\thispagestyle{empty}
+\vspace*{0.6cm}
+\noindent
+\begin{minipage}[t]{0.45\textwidth}
+  {\scshape Problem}\\[0.35em]{\LARGE\bfseries \problemltr}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+  \raggedleft
+  {\scshape Team}\\[0.35em]{\LARGE\bfseries \teamnum}
+\end{minipage}
 
-{\LARGE\bfseries Team \teamnum}\\[0.6cm]
-{\LARGE\bfseries Problem \problemltr}\\[1.4cm]
+\vspace{1.1em}
+\noindent\rule{\linewidth}{0.5pt}
+\vspace{1.7em}
 
-{\huge\bfseries \papertitle}\\[1.6cm]
+\begin{center}
+  {\LARGE\bfseries \papertitle}
+\end{center}
 
-\begin{minipage}{0.92\textwidth}
-\section*{Summary}
+\vspace{1.7em}
+\begin{center}
+  % "Abstract" is equally accepted; 64 of the 74 gold papers use that word.
+  {\large\scshape Summary}
+\end{center}
+
+\begingroup
+\setstretch{1.06}
+\setlength{\leftskip}{0.05\textwidth}
+\setlength{\rightskip}{0.05\textwidth}
 \noindent
 % ---- <=300 words. Must contain: what was done, assumptions, answers to
-% ---- every question asked, final numbers, conclusions. Count the words
-% ---- before you submit (scripts/check_pdf.py does it for you).
+% ---- every question asked, final numbers, conclusions. scripts/check_pdf.py
+% ---- counts the words for you.
 State the physical situation in one sentence. Then say what model you built
 and which assumptions carry it (e.g.\ rigid body, steady state, neglect
 radiation pressure). Then answer each question of the problem in order, with
@@ -120,11 +150,17 @@ the numbers and their units, e.g.\ ``the time to reach the threshold is
 \SI{38}{s} for the nominal case''. Close with one sentence on validation
 (comparison with published data or a limiting case) and one on the main
 uncertainty.
-\end{minipage}
+\par
+\endgroup
 
 \vfill
 \end{titlepage}
 \setcounter{page}{2}% titlepage resets the counter; restore continuous numbering
+
+% ---------- contents ---------------------------------------------------
+% 50 of the 74 gold papers print a Contents page; drop it if you prefer not.
+\tableofcontents
+\clearpage
 
 % =====================================================================
 % BODY
@@ -134,7 +170,7 @@ uncertainty.
 Background in 2--3 paragraphs: why the scenario matters, what is already
 known, what makes it hard. End with a short roadmap of the paper.
 Cite sources as you go, e.g.\ the classical blow-down analysis of
-Ref.~\cite{ref1} and the material data of Ref.~\cite{ref2}.
+Ref.~\cite{shapiro1953,anderson2003}.
 State the contribution explicitly: ``In this paper we derive \ldots, validate
 it against \ldots, and obtain \ldots.''
 
@@ -218,7 +254,7 @@ that supports it, and one sentence interpreting it.
 
 \section{Discussion}
 \label{sec:discussion}
-Compare with independent data or a limiting case (see \cite{ref1,ref3}). Quantify sensitivity to the
+Compare with independent data or a limiting case (see \cite{shapiro1953,landau1987}). Quantify sensitivity to the
 weakest assumption ($\pm20\%$ in $C_d$ changes $t$ by \ldots). List the error
 sources and their size. Say what would change your conclusion.
 
@@ -246,13 +282,18 @@ numbers repeated. Then one sentence on the broader takeaway.
 % =====================================================================
 \section*{References}
 \addcontentsline{toc}{section}{References}
-\begin{thebibliography}{99}
-\bibitem{ref1} A.~Author and B.~Author, ``Title of the paper,''
-  \emph{Journal Name} \textbf{12}(3), 45--67 (2020).
-\bibitem{ref2} C.~Author, \emph{Book Title}, 2nd ed.\ (Publisher, City, 2019),
-  ch.~4.
-\bibitem{ref3} Organisation, ``Page title,'' \url{https://example.org/page},
-  accessed 2026-11-04.
+\begin{thebibliography}{9}
+% Real entries, so the skeleton compiles with a plausible reference list.
+% Replace them with the sources your paper actually used and verify each one.
+\bibitem{shapiro1953} A.~H. Shapiro, \emph{The Dynamics and Thermodynamics of
+Compressible Fluid Flow}, vol.~1 (Ronald Press, New York, 1953).
+\bibitem{anderson2003} J.~D. Anderson, \emph{Modern Compressible Flow: With
+Historical Perspective}, 3rd ed.\ (McGraw-Hill, New York, 2003).
+\bibitem{landau1987} L.~D. Landau and E.~M. Lifshitz, \emph{Fluid Mechanics},
+vol.~6 of Course of Theoretical Physics, 2nd ed.\ (Pergamon, Oxford, 1987).
+\bibitem{press2007} W.~H. Press, S.~A. Teukolsky, W.~T. Vetterling and
+B.~P. Flannery, \emph{Numerical Recipes: The Art of Scientific Computing},
+3rd ed.\ (Cambridge University Press, Cambridge, 2007).
 \end{thebibliography}
 
 \appendix

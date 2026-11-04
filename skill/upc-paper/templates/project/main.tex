@@ -30,6 +30,10 @@
 
 \input{sections/00-frontmatter}
 
+% ---------- contents ---------------------------------------------------
+\tableofcontents
+\clearpage
+
 \input{sections/01-introduction}
 \input{sections/02-problem}
 \input{sections/03-assumptions}
@@ -41,6 +45,8 @@
 \input{sections/09-conclusion}
 
 % ---------- references -------------------------------------------------
+\clearpage
+\addcontentsline{toc}{section}{References}
 \bibliographystyle{unsrt}
 \bibliography{refs}
 

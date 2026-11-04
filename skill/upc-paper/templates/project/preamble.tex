@@ -71,8 +71,11 @@
         aboveskip=0.4em,belowskip=0.8em}
 
 \usepackage[numbers,sort&compress]{natbib}
-\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,
-            urlcolor=blue!50!black]{hyperref}
+%% Links stay black: a judge reads a printed copy, where dark-blue numbers in
+%% the text look like an accident. Set colourlinks=false if the PDF is read on
+%% screen and you want the navigation to be visible.
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,
+            urlcolor=blue!45!black]{hyperref}
 
 % ---------- running head: TEAM NUMBER ON EVERY PAGE ------------------
 \usepackage{fancyhdr}
@@ -121,6 +124,28 @@
 \usepackage{titlesec}
 \titlespacing*{\section}{0pt}{1.2ex plus .3ex minus .2ex}{0.7ex}
 \titlespacing*{\subsection}{0pt}{1.0ex plus .2ex minus .2ex}{0.5ex}
+
+% ---------- table of contents -----------------------------------------
+%% 50 of the 74 gold papers (68 %) print a Contents page straight after the
+%% summary sheet, so the template ships one; delete \tableofcontents in
+%% main.tex if the team prefers a paper without it.
+\usepackage{tocloft}
+\setcounter{tocdepth}{2}
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\cfttoctitlefont}{\large\bfseries}
+\renewcommand{\cftaftertoctitle}{\par\vspace{0.4em}\hrule\vspace{0.8em}}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsecpagefont}{\bfseries}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\setlength{\cftbeforesecskip}{3pt}
+\setlength{\cftbeforesubsecskip}{0.5pt}
+\setlength{\cftsecnumwidth}{2.2em}
+\setlength{\cftsubsecindent}{2.2em}
+\setlength{\cftsubsecnumwidth}{2.8em}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftdotsep}{1.2}
 
 % ---------- an "answer box" for the one number a subsection is about --
 %% Optional but effective: judges should never have to hunt for a number.

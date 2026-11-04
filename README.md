@@ -77,7 +77,8 @@ template/
 
 The layout follows what the gold papers actually do: US Letter, 12 pt
 serif, one-inch margins, single column, team number on the left of every
-page header and problem letter on the right, numeric citations in order of
+page header and problem letter on the right, a Contents page with dot
+leaders (50 of the 74 gold papers have one), numeric citations in order of
 appearance, three-line tables, and an answer box for each question.
 
 ![Model page](docs/preview-page3.png)

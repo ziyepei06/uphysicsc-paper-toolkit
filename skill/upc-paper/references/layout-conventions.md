@@ -49,6 +49,11 @@ The cleanest skeleton in the corpus: `2020/2020-GM-A-354.pdf` — 1 Notations �
 
 Shared features across all 74: team number, problem letter, title, summary — and nothing else decorative. Three common layouts:
 
+- **Contents page.** 50 of the 74 gold papers (68 %) print a Contents page
+  right after the summary sheet; it is not required, but it is normal for a
+  20-page paper and cheap to produce. The template ships
+  `\tableofcontents` with dot leaders and a two-level depth; delete the call
+  if you prefer to go without.
 - **Summary or Abstract?** The rule asks for "a summary ... which will be an
   abstract", so both labels are defensible. Practice leans to Abstract: 64 of
   the 74 gold papers print "Abstract", 5 print "Summary", 3 use both. The
