@@ -4,6 +4,8 @@
 > two problems, one paper). It is **not** the Universitat Politècnica de Catalunya,
 > which owns most of the other `UPC-*` LaTeX repositories on GitHub.
 
+![University Physics Competition — paper toolkit](docs/cover.png)
+
 Everything a University Physics Competition team needs to write the paper:
 a **LaTeX project template** that already compiles, and an **agent skill**
 that carries the rules, the structure, and the judgement calls — both
