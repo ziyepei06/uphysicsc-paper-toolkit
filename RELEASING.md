@@ -42,7 +42,7 @@ with state `uploaded`, and that `/releases/latest` resolves to the new tag.
 
 ## Before tagging
 
-- `cd template && make clean && make` — `RESULT: PASS`, 11 pages, summary 202/300.
+- `cd template && make clean && make` — `RESULT: PASS`, 11 pages, summary 200/300.
 - Flip `\aiusedtrue` in `config.tex`, `make`, confirm the AI section appears,
   then flip it back.
 - Unpack both archives into a clean directory, build there, and run

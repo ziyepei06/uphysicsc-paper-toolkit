@@ -57,11 +57,26 @@ def expand_inputs(path: str, seen: set | None = None, depth: int = 0) -> str:
 
 def from_tex(path: str) -> str:
     src = expand_inputs(path)
-    m = re.search(r"\\section\*?\{\s*Summary\s*\}(.*?)(?=\\section|\\newpage|\\clearpage|\\end\{document\})",
-                  src, flags=re.S)
-    if not m:
-        sys.exit("could not find a '\\section*{Summary}' block in " + path)
-    return strip_latex(m.group(1))
+    # Two accepted layouts: the plain \section*{Summary} skeleton, and the
+    # summary sheet in the multi-file template, where the heading is a centred
+    # \scshape line inside the titlepage environment. "Abstract" is accepted
+    # too: the rule calls the item a summary, but 64 of the 74 gold papers
+    # label it Abstract.
+    pats = [
+        (r"\\section\*?\{\s*(?:Summary|Abstract)\s*\}(.*?)"
+         r"(?=\\section|\\newpage|\\clearpage|\\end\{document\})", None),
+        (r"\\(?:large|Large|LARGE|normalsize)\s*\\scshape\s*(?:Summary|Abstract)\s*\}"
+         r"(.*?)(?=\\end\{titlepage\})", None),
+    ]
+    for pat, _ in pats:
+        m = re.search(pat, src, flags=re.S)
+        if m:
+            body = m.group(1)
+            # the summary sheet sets its measure right after the heading; those
+            # arguments are not prose and must not be counted
+            body = re.sub(r"\\(?:setlength|setstretch|addtolength)\{[^{}]*\}\{[^{}]*\}", " ", body)
+            return strip_latex(body)
+    sys.exit("could not find a Summary/Abstract block in " + path)
 
 
 def from_pdf(path: str) -> str:

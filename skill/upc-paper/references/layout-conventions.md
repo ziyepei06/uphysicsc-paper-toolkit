@@ -49,6 +49,11 @@ The cleanest skeleton in the corpus: `2020/2020-GM-A-354.pdf` — 1 Notations �
 
 Shared features across all 74: team number, problem letter, title, summary — and nothing else decorative. Three common layouts:
 
+- **Summary or Abstract?** The rule asks for "a summary ... which will be an
+  abstract", so both labels are defensible. Practice leans to Abstract: 64 of
+  the 74 gold papers print "Abstract", 5 print "Summary", 3 use both. The
+  template ships "Summary" to match the rule's wording; change the word in
+  `sections/00-frontmatter.tex` and the counting scripts still find the block.
 - Centred stack: `Team 234` / `Problem A` / title / Summary (`2023/2023-GM-A-131.pdf`)
 - Top-left information block plus large title and Summary (MCM-style, `2022/2022-GM-A-395.pdf`)
 - Header right "Team 699 Page 1 / 28", continuing on body pages (`2017/2017-GM-A-699.pdf`)
