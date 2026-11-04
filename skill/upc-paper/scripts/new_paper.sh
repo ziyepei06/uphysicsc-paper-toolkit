@@ -8,7 +8,7 @@
 # Creates a full multi-file project from templates/project/:
 #   <parent>/778A/main.tex, config.tex (team/problem/title filled in),
 #   preamble.tex, refs.bib, sections/00..11, code/, scripts/, figures/,
-#   notes/, Makefile, README.md
+#   notes/, Makefile, README.md, README.zh-CN.md
 
 set -euo pipefail
 

@@ -1,5 +1,7 @@
 # UPC paper project — multi-file skeleton
 
+**English** | [中文](README.zh-CN.md)
+
 A working paper, not an empty template: it compiles, passes the checks, and
 carries a complete worked example (a hull-breach blow-down problem) whose
 numbers come from the code in `code/`. Replace the content, keep the
