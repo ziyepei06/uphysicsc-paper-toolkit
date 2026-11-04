@@ -1,0 +1,56 @@
+%% =====================================================================
+%%  5 Method and Numerical Solution
+%% =====================================================================
+%%  GUIDE
+%%   - Enough detail that another team could repeat it: algorithm, step
+%%     size, tolerance, initial and boundary conditions, software and
+%%     version, runtime.
+%%   - State the convergence check explicitly (step halving, tolerance
+%%     sweep, mesh refinement). One sentence plus one number is enough.
+%%   - Code belongs in the appendix, but the method must be described here
+%%     in the body (official rule).
+%% =====================================================================
+\section{Method and Numerical Solution}
+\label{sec:method}
+
+Equations \eqref{eq:mass}--\eqref{eq:temp} are integrated with an explicit
+fourth-order Runge--Kutta scheme implemented in Python 3.12 with no
+numerical library beyond the standard one, so the code in
+Appendix~\ref{app:code} runs as printed. The code selects the choked or subsonic
+branch at each step from the instantaneous pressure ratio, so $u(p)$ stays
+continuous and the same script handles venting into a partially pressurised
+compartment as well as into vacuum. The step is fixed at $\Delta t=\SI{0.5}{s}$; integration stops at the
+first step with $p<0.3\,p_0$, and $t_{0.3}$ is obtained by linear
+interpolation between the two bracketing states, which is equivalent to a
+local bisection to within $10^{-3}$ of a step.
+
+Two checks justify this resolution. Halving the step to
+$\SI{0.25}{s}$ changes $t_{0.3}$ at $d=\SI{10}{cm}$ from \SI{285.5}{s} to
+\SI{285.25}{s}, a shift of \SI{0.09}{\percent}; refining the stopping
+criterion changes it by less than \SI{0.01}{\percent}. A single run takes
+about \SI{2}{ms} on one core, so the parameter sweep over
+$5\le d\le\SI{20}{cm}$ ($10^{3}$ logarithmically spaced diameters) costs
+a few seconds, and the sweep is what produces the scaling law of
+Section~\ref{sec:results}.
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Nominal parameters and their sources or estimates. The
+  uncertainty column feeds the error budget of
+  Section~\ref{sec:disc-budget}.}
+  \label{tab:params}
+  \begin{tabular}{@{}llll@{}}
+    \toprule
+    Quantity & Value & Source & Uncertainty \\
+    \midrule
+    $V$ & \SI{628}{m^3} & module geometry & \SI{2}{\percent} \\
+    $p_0$ & \SI{101.3}{kPa} & nominal cabin pressure & \SI{1}{\percent} \\
+    $T_0$ & \SI{293}{K} & nominal cabin temperature & \SI{3}{K} \\
+    $d$ & \SI{10}{cm} & problem statement & \SI{5}{\percent} \\
+    $C_d$ & $0.82$ & calibrated, Sec.~\ref{sec:disc-validation} & $\pm0.05$ \\
+    $\gamma$ & $1.40$ & dry air & -- \\
+    $\tau_w$ & \SI{300}{s} & lumped wall balance & \SI{30}{\percent} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

@@ -1,0 +1,97 @@
+%% =====================================================================
+%%  4 Physical Model
+%% =====================================================================
+%%  GUIDE
+%%   - Build in layers: layer 1 the minimum model, then add one effect per
+%%     subsection, saying what changed in the answer (many gold papers use
+%%     explicit "4.1 free flow / 4.2 atmosphere / 4.3 drag" layering).
+%%   - State the governing equation for each layer, its regime of validity,
+%%     and number it if you refer to it later.
+%%   - Derive or motivate; do not drop equations from nowhere.
+%%   - After each equation, define every symbol and check the dimensions
+%%     once in words, e.g. "(Pa/s on both sides)".
+%% =====================================================================
+\section{Physical Model}
+\label{sec:model}
+
+\subsection{Layer 1: minimum model, isentropic discharge}
+\label{sec:model-basic}
+
+The module is a reservoir of volume $V$ at uniform pressure $p(t)$; the
+breach is an orifice of area $A=\pi d^2/4$. Conservation of mass for the
+reservoir, with the outflow evaluated at the orifice, gives
+\begin{equation}
+  \frac{\dd p}{\dd t} = -C_d\,\frac{\gamma p A}{V}\,u(p,T),
+  \label{eq:mass}
+\end{equation}
+where $u$ is the exit speed, $\gamma$ the heat-capacity ratio and $C_d$ a
+discharge coefficient. Both sides of \eqref{eq:mass} carry \si{Pa/s}. The
+coefficient absorbs the vena-contracta contraction and the ratio of
+orifice to reservoir density; it is the single free parameter of the model
+and is calibrated in Section~\ref{sec:disc-validation}, not taken from a
+handbook.
+
+For an ideal gas expanding from rest, the exit speed is
+\begin{equation}
+  u^2 = \frac{2\gamma}{\gamma-1}RT
+  \left[1-\left(\frac{p_a}{p}\right)^{(\gamma-1)/\gamma}\right],
+  \label{eq:subsonic}
+\end{equation}
+which holds until the flow chokes. Choking occurs when the bracket reaches
+its maximum, at $p/p_a=((\gamma+1)/2)^{\gamma/(\gamma-1)}=1.89$ for air;
+beyond that the exit Mach number stays at unity and the speed is set by the
+reservoir state alone,
+\begin{equation}
+  u_{\rm ch} = \sqrt{\frac{2\gamma}{\gamma+1}RT}.
+  \label{eq:choked}
+\end{equation}
+For a vacuum exterior, $p_a\to0$ and the ratio $p/p_a$ never falls below
+1.89, so the flow is choked from the first instant to the last and
+\eqref{eq:subsonic} is never selected. We keep both branches in the code
+because a real breach may vent into a partially pressurised compartment,
+but for the nominal case only \eqref{eq:choked} is active. Equations
+\eqref{eq:mass} and \eqref{eq:choked} are the minimum model: one ordinary
+differential equation for $p(t)$, with $T$ held at $T_0$.
+
+\subsection{Layer 2: wall heat transfer}
+\label{sec:model-thermal}
+
+Adiabatic expansion cools the gas, and the cooling is visible in the
+solution: at $d=\SI{10}{cm}$ the model above ends at \SI{208}{K}. The
+walls, however, hold the module near its initial temperature on a time
+scale of a few hundred seconds, so the gas is warmed as it expands. A
+lumped first-order relaxation captures this,
+\begin{equation}
+  \frac{\dd T}{\dd t}
+  = \frac{\gamma-1}{\gamma}\frac{T}{p}\frac{\dd p}{\dd t}
+  - \frac{1}{\tau_w}\left(T-T_w\right),
+  \label{eq:temp}
+\end{equation}
+where the first term is the isentropic relation $T\propto
+p^{(\gamma-1)/\gamma}$ written as a rate, and $\tau_w$ is the wall
+relaxation time estimated from a lumped-capacitance balance. For the
+nominal module $\tau_w\approx\SI{300}{s}$, comparable with $t_{0.3}$, so
+the correction is not negligible: it lowers $t_{0.3}$ by \SI{2}{\percent}
+at $d=\SI{10}{cm}$ and by \SI{5}{\percent} at \SI{5}{cm}, because a warmer
+gas is less dense and carries less mass out of the same hole.
+
+\subsection{Layer 3: dimensionless form}
+\label{sec:model-pi}
+
+With $P=p/p_0$ and $\theta=t/\tau$, where
+\begin{equation}
+  \tau = \frac{V}{\gamma C_d A c_s},\qquad c_s=\sqrt{\gamma R T_0},
+  \label{eq:tau}
+\end{equation}
+the system \eqref{eq:mass}--\eqref{eq:temp} depends on two groups only,
+\begin{equation}
+  \frac{\dd P}{\dd\theta} = -P\,\frac{u(P)}{c_s},\qquad
+  \Pi_T = \frac{\tau}{\tau_w},
+  \label{eq:pi}
+\end{equation}
+so one numerical solution covers every module size and every hole
+diameter, provided $\gamma$ and $\Pi_T$ are unchanged. For the nominal
+case $\tau=\SI{203}{s}$, and $t_{0.3}/\tau=1.41$. Because $A\propto d^2$,
+\eqref{eq:tau} already implies $t_{0.3}\propto d^{-2}$; the measured
+exponent of Section~\ref{sec:results} is slightly shallower because
+$\Pi_T$ changes with $d$.

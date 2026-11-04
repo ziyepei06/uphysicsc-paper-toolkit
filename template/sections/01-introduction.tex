@@ -1,0 +1,45 @@
+%% =====================================================================
+%%  1 Introduction  (median 1.5 pages; 70 of 74 gold papers use this title)
+%% =====================================================================
+%%  GUIDE
+%%   - Para 1: the physical situation and why it matters. Two or three
+%%     sentences, no history of physics.
+%%   - Para 2: what is already known, with citations [1-3]. Name the
+%%     specific assumption of each prior model, not just "many studies".
+%%   - Para 3: the gap this problem exposes, and your contribution in one
+%%     sentence: "In this paper we derive ..., validate it against ...,
+%%     and obtain ...."
+%%   - Close with a two-sentence roadmap, not a paragraph.
+%%  Do not write "since the beginning of time" or a popular-science intro.
+%% =====================================================================
+\section{Introduction}
+\label{sec:intro}
+
+A breach in the pressure hull of a crewed module vents its atmosphere in
+minutes, and the resulting pressure--time history decides whether the crew
+can seal the hole, reach a shelter, or must abandon the module. The design
+question is therefore quantitative: given the hole size and the module
+volume, how long does the crew have before the pressure falls below the
+survival threshold, and how much does that time depend on the parameters
+that are known only roughly?
+
+Compressible-flow theory gives the mass flux through an orifice, in both
+the choked and the subsonic regime \citep{shapiro1953,anderson2003}, and
+the quasi-steady reservoir model built on it is standard in vacuum
+technology \citep{landau1987}. Applied to a habitat, that standard
+treatment usually stops at two simplifications: the discharge coefficient
+is taken from a handbook, and the gas is assumed isothermal or adiabatic
+throughout. Neither is harmless here. The handbook value belongs to a
+sharp-edged plate, not to a hole in a hull, and the thermal state of the
+gas controls its density, hence the mass that still has to leave and the
+time the crew actually has.
+
+In this paper we (i) derive a quasi-steady blow-down model that keeps the
+choked branch and adds wall heat transfer as a first-order relaxation,
+(ii) calibrate its single free parameter, the discharge coefficient,
+against published leak-down data, and (iii) reduce the result to a scaling
+law, $t_{0.3}=1.41\,\tau$ with $\tau\propto d^{-2}$, that a crew can
+evaluate without a computer. Section~\ref{sec:model} sets out the model,
+Section~\ref{sec:results} answers the three questions of the problem
+statement, and Section~\ref{sec:discussion} quantifies the uncertainty and
+states where the model must not be used.

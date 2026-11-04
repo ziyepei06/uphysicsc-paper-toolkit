@@ -1,0 +1,68 @@
+%% =====================================================================
+%%  10 Appendix
+%% =====================================================================
+%%  GUIDE
+%%   - Long algebra, code, raw data tables, extra parameter studies.
+%%   - The method must still be explained in the body (official rule);
+%%     the appendix is for details, not for hiding the method.
+%%   - Code is quoted from code/ so the listing and the run stay identical.
+%% =====================================================================
+\appendix
+
+\section{Derivation of the orifice speed}
+\label{app:derivation}
+
+Starting from the steady energy equation for an adiabatic nozzle with no
+work, $h+u^2/2=h_0$, and using $h=c_pT$ with
+$T/T_0=(p/p_0)^{(\gamma-1)/\gamma}$, the exit speed is
+\begin{equation}
+  u^2 = \frac{2\gamma}{\gamma-1}\frac{p_0}{\rho_0}
+  \left[1-\left(\frac{p_a}{p}\right)^{(\gamma-1)/\gamma}\right],
+  \label{eq:app-derivation}
+\end{equation}
+which is Eq.~\eqref{eq:subsonic} written at the reservoir state. The
+bracket is largest when the flow chokes, at
+$p/p_a=((\gamma+1)/2)^{\gamma/(\gamma-1)}$; substituting that ratio gives
+\begin{equation}
+  u_{\rm ch}^2 = \frac{2\gamma}{\gamma+1}\frac{p_0}{\rho_0}
+  = \frac{2\gamma}{\gamma+1}RT_0,
+  \label{eq:app-choked}
+\end{equation}
+that is, Eq.~\eqref{eq:choked}, whose speed no longer depends on the
+ambient pressure. Differentiating the mass balance
+$\dd m/\dd t=-\rho_e A u$ with $m=\rho V$ and using
+$\rho\propto p^{1/\gamma}$ gives Eq.~\eqref{eq:mass}, with the ratio
+$\rho_e/\rho=(2/(\gamma+1))^{1/(\gamma-1)}=0.63$ absorbed into $C_d$ ---
+which is why the fitted coefficient is not the handbook one.
+
+\section{Numerical code}
+\label{app:code}
+
+The integration quoted in Section~\ref{sec:method} is performed by the
+script below; the listing is included with \texttt{lstinputlisting} so the
+printed code cannot drift from the version that produced the numbers.
+
+\lstinputlisting[language=Python,caption={Blow-down integration used for
+all results in Section~\ref{sec:results}.}]{code/blowdown.py}
+
+\section{Parameter sweep data}
+\label{app:data}
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{The three diameters used in Table~\ref{tab:results}. The last
+  column multiplies the measured time by $(d/\SI{10}{cm})^{1.97}$; it is
+  constant to \SI{1}{\percent}, which is what makes the power law a valid
+  summary over this range.}
+  \label{tab:sweep}
+  \begin{tabular}{@{}S[table-format=2.0]S[table-format=4.1]S[table-format=3.1]@{}}
+    \toprule
+    {$d$ (cm)} & {$t_{0.3}$ (s)} & {$t_{0.3}(d/\SI{10}{cm})^{1.97}$ (s)} \\
+    \midrule
+     5 & 1108 & 283 \\
+    10 &  286 & 286 \\
+    20 &   73 & 284 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

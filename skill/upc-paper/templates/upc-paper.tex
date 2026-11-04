@@ -1,0 +1,255 @@
+%% =====================================================================
+%%  University Physics Competition (UPC) -- official-style paper template
+%%  Based on 2010-2025 Gold Medal papers (see references/layout-conventions.md)
+%%
+%%  Compile:  bash scripts/build.sh paper.tex
+%%  Check  :  python3 scripts/check_pdf.py paper.pdf
+%%
+%%  HARD RULES enforced by this template
+%%   - page 1 holds ONLY: team number, problem letter, title, summary (<=300 words)
+%%   - team number appears in the header of EVERY page
+%%   - no student names / institution anywhere
+%% =====================================================================
+\documentclass[12pt,letterpaper]{article}
+
+% ---------- page geometry & typography -------------------------------
+\usepackage[letterpaper,margin=1in,headheight=14pt,headsep=18pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.08}
+
+% ---------- math ------------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{siunitx}
+\sisetup{detect-all,per-mode=symbol,exponent-product=\times}
+
+% ---------- floats, tables, figures ----------------------------------
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{float}
+\usepackage[font=small,labelfont=bf,justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage[section]{placeins}
+
+% ---------- lists, code, links ---------------------------------------
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=3pt,parsep=0pt}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,frame=single,
+        numbers=left,numberstyle=\tiny,columns=fullflexible}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,
+            urlcolor=blue!50!black]{hyperref}
+
+% ---------- running head: TEAM NUMBER ON EVERY PAGE ------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Team \teamnum}
+\fancyhead[R]{\small Problem \problemltr}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyhead[L]{\small Team \teamnum}%
+  \fancyhead[R]{\small Problem \problemltr}\fancyfoot[C]{\small\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}}
+
+% ---------- fill these in ---------------------------------------------
+\newcommand{\teamnum}{000}          % <-- your team number
+\newcommand{\problemltr}{A}         % <-- A or B
+\newcommand{\papertitle}{Full Paper Title Written in Title Case}
+
+% ---------- macros (keep consistent notation across the team) --------
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\vect}[1]{\bm{#1}}
+% siunitx v3 already provides \qty and \unit; use those directly.
+
+\begin{document}
+
+% =====================================================================
+% PAGE 1 -- exactly four items. Nothing else. No names, no school.
+% =====================================================================
+\begin{titlepage}
+\thispagestyle{plain}
+\centering
+\vspace*{1.2cm}
+
+{\LARGE\bfseries Team \teamnum}\\[0.6cm]
+{\LARGE\bfseries Problem \problemltr}\\[1.4cm]
+
+{\huge\bfseries \papertitle}\\[1.6cm]
+
+\begin{minipage}{0.92\textwidth}
+\section*{Summary}
+\noindent
+% ---- <=300 words. Must contain: what was done, assumptions, answers to
+% ---- every question asked, final numbers, conclusions. Count the words
+% ---- before you submit (scripts/check_pdf.py does it for you).
+State the physical situation in one sentence. Then say what model you built
+and which assumptions carry it (e.g.\ rigid body, steady state, neglect
+radiation pressure). Then answer each question of the problem in order, with
+the numbers and their units, e.g.\ ``the time to reach the threshold is
+\SI{38}{s} for the nominal case''. Close with one sentence on validation
+(comparison with published data or a limiting case) and one on the main
+uncertainty.
+\end{minipage}
+
+\vfill
+\end{titlepage}
+\setcounter{page}{2}% titlepage resets the counter; restore continuous numbering
+
+% =====================================================================
+% BODY
+% =====================================================================
+\section{Introduction}
+\label{sec:intro}
+Background in 2--3 paragraphs: why the scenario matters, what is already
+known, what makes it hard. End with a short roadmap of the paper.
+Cite sources as you go, e.g.\ the classical blow-down analysis of
+Ref.~\cite{ref1} and the material data of Ref.~\cite{ref2}.
+State the contribution explicitly: ``In this paper we derive \ldots, validate
+it against \ldots, and obtain \ldots.''
+
+\section{Problem Restatement and Clarification}
+\label{sec:problem}
+Restate the problem in your own words. Define the quantities that are asked
+for and their symbols. If the statement is ambiguous, say which
+interpretation you adopt and why.
+
+\section{Assumptions and Notations}
+\label{sec:assumptions}
+Every assumption gets a reason and, where possible, a quantitative check that
+it is harmless (order-of-magnitude estimate). Tables read well here.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Assumptions and the justification for each.}
+  \label{tab:assumptions}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    \# & Assumption & Justification / validity check \\
+    \midrule
+    A1 & Air is an ideal gas & Knudsen number $\ll 1$ for $p>\SI{0.01}{atm}$ \\
+    A2 & Quasi-steady outflow & hole diameter $\ll$ station length \\
+    A3 & Isothermal walls & 48\,h time scale $\gg$ thermal relaxation \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Physical Model}
+\label{sec:model}
+Build the model in layers. For each layer state the governing equation and
+its regime of validity. Number every equation you refer to later.
+
+\begin{equation}
+  \frac{\dd p}{\dd t} = -\frac{\gamma p A}{V}\,u(p), \qquad
+  u(p) = \sqrt{\frac{2\gamma}{\gamma-1}\frac{p}{\rho}\left[1-\left(\frac{p_a}{p}\right)^{(\gamma-1)/\gamma}\right]}
+  \label{eq:blowdown}
+\end{equation}
+
+Explain each symbol right after it appears, then check dimensions
+($[\mathrm{Pa/s}]$ on both sides).
+
+\section{Method and Numerical Solution}
+\label{sec:method}
+Describe the algorithm, parameters, step size, convergence criterion and
+runtime. State what software was used and cite it. Reproducibility matters
+more than sophistication.
+
+\section{Results}
+\label{sec:results}
+One subsection per question asked in the problem statement. Each subsection:
+state the answer, give the number with units and uncertainty, show the figure
+that supports it, and one sentence interpreting it.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.72\textwidth]{figures/example.pdf}
+  \caption{Pressure ratio $p/p_0$ versus time for three hole diameters
+  (solid, dashed, dotted). Replace with your own figure: vector PDF,
+  axes labelled with the physical quantity and its unit, one caption
+  sentence stating what is plotted and what the reader should see.}
+  \label{fig:blowdown}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Time to reach $0.3\,p_0$ versus hole diameter.}
+  \label{tab:results}
+  \begin{tabular}{@{}S[table-format=2.0]S[table-format=4.1]@{}}
+    \toprule
+    {$d$ (cm)} & {$t$ (s)} \\
+    \midrule
+     5 & 1108.0 \\
+    10 &  285.5 \\
+    20 &   72.5 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Discussion}
+\label{sec:discussion}
+Compare with independent data or a limiting case (see \cite{ref1,ref3}). Quantify sensitivity to the
+weakest assumption ($\pm20\%$ in $C_d$ changes $t$ by \ldots). List the error
+sources and their size. Say what would change your conclusion.
+
+\section{Strengths and Weaknesses}
+\label{sec:sw}
+\textbf{Strengths.}
+\begin{enumerate}[label=(\arabic*)]
+  \item The model reproduces the published blow-down curve within 8\%.
+  \item Assumptions are checked, not merely stated.
+  \item Results are given as closed-form scaling laws usable outside the
+        specific numbers of the problem.
+\end{enumerate}
+\textbf{Weaknesses.}
+\begin{enumerate}[label=(\arabic*)]
+  \item Choked flow is assumed throughout; near $0.3\,p_0$ this overestimates
+        the mass flux by \ldots\%.
+  \item Wall friction and heat transfer are neglected.
+\end{enumerate}
+
+\section{Conclusion}
+\label{sec:conclusion}
+Answer each question of the problem in one numbered sentence, with the final
+numbers repeated. Then one sentence on the broader takeaway.
+
+% =====================================================================
+\section*{References}
+\addcontentsline{toc}{section}{References}
+\begin{thebibliography}{99}
+\bibitem{ref1} A.~Author and B.~Author, ``Title of the paper,''
+  \emph{Journal Name} \textbf{12}(3), 45--67 (2020).
+\bibitem{ref2} C.~Author, \emph{Book Title}, 2nd ed.\ (Publisher, City, 2019),
+  ch.~4.
+\bibitem{ref3} Organisation, ``Page title,'' \url{https://example.org/page},
+  accessed 2026-11-04.
+\end{thebibliography}
+
+\appendix
+\section{Derivation of Eq.~\eqref{eq:blowdown}}
+\label{app:derivation}
+Long algebra goes here; the main text must already explain the method.
+
+\section{Code}
+\label{app:code}
+\begin{lstlisting}[language=Python,caption={Integration of Eq.~\eqref{eq:blowdown}.}]
+import numpy as np
+def blowdown(p0=101325.0, V=628.0, A=7.85e-5, gamma=1.4, dt=1e-3):
+    ...
+\end{lstlisting}
+
+% ---- required only if generative AI was used (see official rule 5) ---
+% \section*{Report on the Use of AI}
+% \addcontentsline{toc}{section}{Report on the Use of AI}
+% System used: <name/version>. Query (verbatim): \texttt{"..."}.
+% Full output: \begin{quote}...\end{quote}
+
+\end{document}

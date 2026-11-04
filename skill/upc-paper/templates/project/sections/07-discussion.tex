@@ -1,0 +1,88 @@
+%% =====================================================================
+%%  7 Discussion
+%% =====================================================================
+%%  GUIDE (this section is where gold papers separate from silver ones)
+%%   - Validation: compare with an external number (published experiment,
+%%     flight data, a limiting case). Quantify the deviation; "good
+%%     agreement" is not a number.
+%%   - Error budget: a table with one row per source and a dominant term.
+%%   - Sensitivity: what changes the conclusion, and by how much.
+%%   - Limits: the regime where the model must not be used.
+%%  Only 18 of 74 gold papers contain an explicit validation -- doing it
+%%  well is a cheap differentiator.
+%% =====================================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Validation against published data}
+\label{sec:disc-validation}
+
+%% EXAMPLE: the comparison below is a template. Fit C_d to the data you
+%% actually have, and cite the source you verified yourself.
+The model has one free parameter, $C_d$. Fitting it to a published
+leak-down curve for a comparable module gives $C_d=0.82$; with that value
+the model reproduces the curve within \SI{8}{\percent} over
+$1>p/p_0>0.35$. The largest deviation sits at the low-pressure end, where
+the measured decay is slower than the adiabatic solution predicts, and it
+is reduced from \SI{8}{\percent} to \SI{4}{\percent} once the wall term
+\eqref{eq:temp} is switched on. That is the evidence that the thermal
+correction is capturing something real rather than fitting noise.
+
+A second, independent check is the limiting case of no wall heating. With
+$\tau_w\to\infty$ the same code gives $5$ and \SI{20}{cm} times in the
+ratio $3.99:1$, an exponent of \num{2.00}, which is the value
+Eq.~\eqref{eq:tau} demands for $A\propto d^2$. The \num{1.97} of
+Section~\ref{sec:results} is therefore produced by the thermal correction
+and not by the integrator, and the two limits bracket the physical answer.
+
+\subsection{Error budget}
+\label{sec:disc-budget}
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Error budget for $t_{0.3}$ at $d=\SI{10}{cm}$. The dominant
+  term is the hole diameter, which enters as $d^{-2}$; the discharge
+  coefficient is second.}
+  \label{tab:budget}
+  \begin{tabular}{@{}lS[table-format=2.0]S[table-format=2.1]l@{}}
+    \toprule
+    Source & {Magnitude (\%)} & {Effect on $t_{0.3}$ (\%)} & Handling \\
+    \midrule
+    Hole diameter         &  5 & 10.5 & geometric measurement \\
+    Discharge coefficient &  6 &  6.3 & calibrated, Sec.~\ref{sec:disc-validation} \\
+    Module volume         &  2 &  1.9 & module geometry \\
+    Wall temperature      &  3 &  0.5 & lumped model, Eq.~\eqref{eq:temp} \\
+    Numeric               & {--} &  0.09 & step halving \\
+    \midrule
+    Total (quadrature)    & {--} & 12.4 & dominant: $d$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Table~\ref{tab:budget} gives $\pm\SI{12}{\percent}$ in total, so the answer
+to Q1 is quoted as \SI{286}{s} rather than \SI{285.5}{s}. The error is
+dominated by a length that can be measured directly, not by the model, and
+that is the distinction the section exists to make: the physics is worth
+\SI{6}{\percent}, the measurement is worth \SI{10}{\percent}.
+
+\subsection{Limits of validity}
+\label{sec:disc-limits}
+
+Two limits bound the result. The quasi-steady assumption fails once the
+venting time approaches the acoustic transit time of the module,
+$L/c_s\approx\SI{30}{ms}$; that is four orders of magnitude below
+$t_{0.3}$ at \SI{10}{cm} but only a factor of twenty at \SI{1}{m}, so the
+model must not be pushed to metre-scale breaches without a compressible
+treatment. The well-mixed assumption fails for a compartmented module well
+before the pressure does: once the breach is sealed off from part of the
+volume, the problem becomes a network of reservoirs and this single-volume
+model overestimates the available time.
+
+There is also a modelling limit worth stating plainly. Because $C_d$
+absorbs the throat density ratio and the contraction, its fitted value
+($0.82$) is not comparable with the handbook value for a sharp-edged
+orifice ($0.61$): the two differ by the factor
+$(2/(\gamma+1))^{1/(\gamma-1)}=0.63$ that the lumped form hides. A reader
+who substitutes the handbook number into \eqref{eq:mass} will get a time
+that is \SI{34}{\percent} too long.

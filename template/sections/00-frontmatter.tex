@@ -1,0 +1,50 @@
+%% =====================================================================
+%%  Page 1 -- exactly four items. Nothing else.
+%%  Team number / problem letter / title / summary (<=300 words).
+%%  No names, no school, no date, no logo, no abstract heading other than
+%%  "Summary".
+%%
+%%  NOTE: the scenario and the numbers below are a worked example that is
+%%  consistent with code/blowdown.py. Replace them with your own problem.
+%% =====================================================================
+\begin{titlepage}
+\thispagestyle{plain}
+\centering
+\vspace*{1.0cm}
+
+{\LARGE\bfseries Team \teamnum}\\[0.5cm]
+{\LARGE\bfseries Problem \problemltr}\\[1.2cm]
+
+{\huge\bfseries \papertitle}\\[1.4cm]
+
+\begin{minipage}{0.92\textwidth}
+\section*{Summary}
+\noindent
+%% GUIDE (delete this block when writing):
+%%  S1  30-50 words  situation and goal, one sentence
+%%  S2  60-90 words  model + the 2-3 assumptions that carry it
+%%  S3 100-140 words answers to every question, with numbers and units
+%%  S4  50-70 words  what it was validated against, main uncertainty
+%%  Count before submitting: python3 scripts/count_summary.py main.tex --tex
+A hull breach vents a crewed module in minutes, and the time available
+decides whether the crew can seal it. We model the blow-down as a
+quasi-steady discharge of an ideal gas through a sharp-edged orifice,
+keeping the choked branch throughout and adding wall heat transfer as a
+first-order relaxation; the assumptions that carry the model are a rigid,
+well-mixed module, a discharge coefficient independent of pressure ratio,
+and walls that stay at their initial temperature. For a \SI{10}{cm} hole
+in a \SI{628}{m^3} module at \SI{101}{kPa} the pressure falls to
+$0.3\,p_0$ in \SI{286}{s}, and a crew that needs \SI{120}{s} to seal the
+breach keeps a margin of \SI{166}{s}, which disappears once the hole
+exceeds \SI{15}{cm} (the crew needs \SI{120}{s}). Across \SI{5}{cm} to \SI{20}{cm} the time follows
+$t_{0.3}\propto d^{-1.97}$, so doubling the hole cuts the window by a
+factor of four. Wall heat transfer shortens $t_{0.3}$ by \SI{2}{\percent}
+at the nominal diameter and by \SI{5}{\percent} at \SI{5}{cm}. The answer
+carries $\pm\SI{12}{\percent}$, dominated by the hole diameter rather than
+by the model; a bench measurement of that one length would tighten the
+result more than any refinement of the physics.
+\end{minipage}
+
+\vfill
+\end{titlepage}
+\setcounter{page}{2}% titlepage resets the page counter; keep numbering continuous

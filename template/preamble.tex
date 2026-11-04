@@ -1,0 +1,89 @@
+%% =====================================================================
+%%  preamble.tex -- packages, page style, notation macros
+%% =====================================================================
+%%  Do not rebuild this file for every paper: the typography here matches
+%%  the conventions measured across the 74 Gold Medal papers (12 pt serif,
+%%  Letter, 1-inch margins, single column, numbered sections, booktabs
+%%  tables, bracketed numeric citations). Switch to two columns only if you
+%%  have a reason -- 18 of 74 gold papers do, 56 do not.
+%%
+%%  Two-column variant: in main.tex change
+%%      \documentclass[12pt,letterpaper]{article}
+%%  to
+%%      \documentclass[12pt,letterpaper,twocolumn]{article}
+%%  and set \geometry{...} margins to 0.75in. Figures then need
+%%  \begin{figure*} for full width.
+%% =====================================================================
+
+% ---------- page geometry & typography -------------------------------
+\usepackage[letterpaper,margin=1in,headheight=14pt,headsep=18pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.08}
+
+% ---------- math ------------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{siunitx}
+\sisetup{detect-all,per-mode=symbol,exponent-product=\times}
+
+% ---------- floats, tables, figures ----------------------------------
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{float}
+\usepackage[font=small,labelfont=bf,justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage[section]{placeins}
+
+% ---------- lists, code, links ---------------------------------------
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=3pt,parsep=0pt}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,frame=single,
+        numbers=left,numberstyle=\tiny,columns=fullflexible,
+        captionpos=b,showstringspaces=false}
+\usepackage{xcolor}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,
+            urlcolor=blue!50!black]{hyperref}
+
+% ---------- running head: TEAM NUMBER ON EVERY PAGE ------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Team \teamnum}
+\fancyhead[R]{\small Problem \problemltr}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[L]{\small Team \teamnum}%
+  \fancyhead[R]{\small Problem \problemltr}%
+  \fancyfoot[C]{\small\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}}
+
+% ---------- notation macros: use these everywhere --------------------
+%% One symbol, one meaning, defined once. Add project symbols here rather
+%% than redefining them in sections; a merged paper with two meanings for
+%% one symbol is the most common consistency defect.
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\order}[1]{\mathcal{O}\!\left(#1\right)}
+% siunitx v3 provides \qty and \unit already -- do not redefine them.
+
+% ---------- section spacing tuned for 20-28 page papers --------------
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.2ex plus .3ex minus .2ex}{0.7ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus .2ex minus .2ex}{0.5ex}
+
+% ---------- an "answer box" for the one number a subsection is about --
+%% Optional but effective: judges should never have to hunt for a number.
+\newcommand{\keyresult}[1]{%
+  \begin{center}\fbox{\parbox{0.9\textwidth}{\centering #1}}\end{center}}

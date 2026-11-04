@@ -1,0 +1,78 @@
+%% =====================================================================
+%%  3 Assumptions and Notations
+%% =====================================================================
+%%  GUIDE
+%%   - One row per assumption: statement, justification, quantitative
+%%     check. A bare list of assumptions loses the points this section
+%%     exists to win.
+%%   - Group by theme (geometry / gas / thermal / flow) if you have more
+%%     than six; 66 of 74 gold papers have an explicit assumptions section,
+%%     only 30 include a notation table.
+%%   - Define every symbol once, here or at first use -- not both.
+%% =====================================================================
+\section{Assumptions and Notations}
+\label{sec:assumptions}
+
+The model rests on five assumptions. Each is followed by the estimate that
+justifies it, using the nominal case ($V=\SI{628}{m^3}$, $d=\SI{10}{cm}$,
+$T_0=\SI{293}{K}$, $p_0=\SI{101.3}{kPa}$), and by the error that would
+appear if the assumption were dropped. The error is measured by rerunning
+the code with the effect included or removed, not estimated by eye.
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.15}
+  \caption{Assumptions and the justification for each. The last column is
+  the change in $t_{0.3}$ when the effect is switched on in the code.}
+  \label{tab:assumptions}
+  \begin{tabular}{@{}l p{0.27\textwidth} p{0.40\textwidth} >{\raggedleft\arraybackslash}p{0.12\textwidth}@{}}
+    \toprule
+    \# & Assumption & Justification / validity check & Effect \\
+    \midrule
+    A1 & Ideal gas, $\gamma=1.40$ &
+         $p\ll p_c$; $T$ stays in \SI{210}{K}--\SI{293}{K} & $<\SI{2}{\percent}$ \\
+    A2 & Quasi-steady orifice flow &
+         $L/c_s=\SI{30}{ms}$, i.e.\ $10^{-4}$ of $t_{0.3}$ & $<\SI{1}{\percent}$ \\
+    A3 & Sharp-edged hole, $C_d$ fixed &
+         $\mathrm{Re}\approx2\times10^{6}$; $C_d$ calibrated in
+         Sec.~\ref{sec:disc-validation} & $\pm\SI{6}{\percent}$ \\
+    A4 & Well-mixed interior &
+         turbulent mixing \SI{10}{s} $\ll t_{0.3}$ & $<\SI{5}{\percent}$ \\
+    A5 & Walls at $T_w=\SI{293}{K}$ &
+         $\tau_w=\SI{300}{s}$ is comparable to $t_{0.3}$, so the relaxation
+         is modelled, not assumed & $-\SI{2}{\percent}$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+A1 and A2 are the easy ones: the gas stays far from its critical point and
+the module empties far more slowly than sound crosses it. A4 is the one
+usually asserted without evidence; the estimate above uses the turbulent
+mixing time of the cabin air rather than the venting time, which is the
+honest comparison. A5 is not really an assumption --- it defines the
+thermal layer of Section~\ref{sec:model-thermal}, and its effect is
+measured, not bounded.
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Notation.}
+  \label{tab:notation}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    Symbol & Meaning & Unit \\
+    \midrule
+    $p$, $p_0$, $p_a$ & internal, initial, ambient pressure & Pa \\
+    $T$, $T_0$, $T_w$  & gas, initial, wall temperature     & K \\
+    $V$, $A$, $d$      & module volume, hole area, hole diameter & m$^3$, m$^2$, m \\
+    $\gamma$, $R$, $c_s$ & heat-capacity ratio, gas constant, sound speed & --, J\,kg$^{-1}$\,K$^{-1}$, m\,s$^{-1}$ \\
+    $C_d$              & lumped discharge coefficient       & -- \\
+    $u$, $\dot m$      & exit speed, mass flow rate         & m\,s$^{-1}$, kg\,s$^{-1}$ \\
+    $\tau$, $\tau_w$   & venting time scale, wall relaxation time & s \\
+    $\Pi_T$            & wall-to-venting time ratio, $\tau/\tau_w$ & -- \\
+    $t_{0.3}$          & time to reach $0.3\,p_0$           & s \\
+    \bottomrule
+  \end{tabular}
+\end{table}
