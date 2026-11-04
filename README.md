@@ -15,7 +15,7 @@ Gold is roughly the top 2%, and most of what separates a gold paper from a
 carefully done silver one is not physics — it is whether the reader can find
 the assumptions, the answers, and the uncertainty in the first two minutes.
 
-![Page 1](docs/preview-page1.png)
+![Four pages of the example: the summary sheet, the assumptions, the model, and the results](docs/preview.png)
 
 ## What is in here
 
@@ -80,8 +80,6 @@ serif, one-inch margins, single column, team number on the left of every
 page header and problem letter on the right, a Contents page with dot
 leaders (50 of the 74 gold papers have one), numeric citations in order of
 appearance, three-line tables, and an answer box for each question.
-
-![Model page](docs/preview-page3.png)
 
 ## The skill
 
