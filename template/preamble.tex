@@ -58,8 +58,10 @@
         numbers=left,numberstyle=\tiny\color{codenum},columns=fullflexible,
         captionpos=b,showstringspaces=false,
         keywordstyle=\color{codekw}\bfseries,
-        commentstyle=\color{codecm}\itshape,
-        stringstyle=\color{codestr}}
+        commentstyle=\color{codecm}\itshape}
+% Strings stay black on purpose: a long Python docstring is one string, and
+% painting ten lines of prose is noise, not information. Uncomment to colour
+% them:  stringstyle=\color{codestr}
 % ---------- verbatim blocks for the AI report ------------------------
 % Prompts and model outputs are pasted as-is; lstlisting keeps characters
 % such as _, %, \ and { from breaking the build.
