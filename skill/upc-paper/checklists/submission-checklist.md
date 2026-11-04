@@ -11,7 +11,8 @@ Run top to bottom. Anything unchecked is a defect; anything you cannot check, sa
 - [ ] Body restates the problem, states all assumptions, justifies each step
 - [ ] Strengths and weaknesses section present
 - [ ] References with in-text citations
-- [ ] If generative AI was used: "Report on the Use of AI" at the end with system, verbatim prompts, full outputs
+- [ ] If generative AI was used: `\aiusedtrue` set in `config.tex`, and the last section is "Report on the Use of AI" with the systems table, verbatim prompts and full outputs
+- [ ] If generative AI was not used: no AI paragraph anywhere, and no stray "Report on the Use of AI" heading in the PDF
 - [ ] Filename `<team><problem>.pdf` (e.g. `778A.pdf`)
 
 ## B. Answers

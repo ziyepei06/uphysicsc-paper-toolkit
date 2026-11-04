@@ -300,13 +300,44 @@ Weaknesses:
 
 ## 13. Report on the Use of AI (only if AI was used)
 
-Three elements, none optional:
+The rule is literal: name the system, quote the query verbatim, reproduce the
+output in full. Four of the 16 gold papers in 2025 did this; only one
+(2025-B-765) satisfied all three clauses, and it spent five pages on it. So
+the section is short in structure and long in evidence — that is the trade.
 
-1. System: name and version ("DeepSeek-V3 via DSH agent, 2026-11").
-2. Query: the **verbatim** input, not a paraphrase.
-3. Output: the **complete** output (may be placed in an appendix, but not truncated).
+**If no generative tool touched the paper, write nothing.** No "no AI was
+used" paragraph: silence is the correct state, and the template enforces it
+(the section compiles only when `\aiusedtrue` is set in `config.tex`).
 
-If AI was used only for language polishing, say so honestly; when in doubt, disclose.
+Ordered the way the rule reads:
+
+1. **Systems table** — system name, developer, version and date of access,
+   interface (web chat / API / IDE plug-in), and what it was used for.
+   List every assistant that received team text, code or data.
+2. **Work carried out without AI** — the model, the derivation, the numerical
+   scheme, the parameter choice, the figures, the conclusions. Say which of
+   them the assistant never touched. Do not overclaim: if it proposed an
+   equation that survived, the query belongs in the table below even if you
+   re-derived it.
+3. **Queries table plus verbatim prompts** — number them; the opening words
+   go in the table, the full wording in a `lstlisting` block beneath it.
+   Keep typos: the rule asks for the exact wording, not a cleaned-up version.
+4. **Outputs in full, one block per query** — same numbering, unedited,
+   mistakes included. Say "including its mistakes" if it made any; graders
+   check the report against the paper.
+
+Practical notes:
+
+- Budget the pages. Five pages of raw output is normal when code was
+  generated; language-only use needs a page or less.
+- Log as you go (see `timeline-and-roles.md`): reconstructing a week of
+  prompts from memory on the last night produces a report that does not
+  match the chat history.
+- Keep the log honest but small: do not ask an assistant for work you can do
+  yourself, and you will have little to disclose.
+- The section belongs at the very end, after the appendices. In the template
+  it is appendix D (letters follow the appendix count), heading
+  "Report on the Use of AI" exactly as the rule spells it.
 
 ---
 

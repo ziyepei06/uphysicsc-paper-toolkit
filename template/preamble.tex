@@ -47,6 +47,14 @@
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,frame=single,
         numbers=left,numberstyle=\tiny,columns=fullflexible,
         captionpos=b,showstringspaces=false}
+% ---------- verbatim blocks for the AI report ------------------------
+% Prompts and model outputs are pasted as-is; lstlisting keeps characters
+% such as _, %, \ and { from breaking the build.
+\lstdefinestyle{aiquote}{basicstyle=\ttfamily\footnotesize,breaklines=true,
+        frame=leftline,framerule=0.4pt,columns=fullflexible,
+        showstringspaces=false,xleftmargin=1.2em,framesep=4pt,
+        aboveskip=0.4em,belowskip=0.8em}
+
 \usepackage{xcolor}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,

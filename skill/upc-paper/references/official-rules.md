@@ -40,7 +40,14 @@ Actions: four mandatory content blocks; citations in text and in the list; appen
 
 > "If a team uses a generative AI tool in writing the paper it is required that the team is transparent about this, clearly stating what tools were used and in what way. The end of the paper must contain a section "Report on the Use of AI" stating (1) what system was used, (2) the query (the exact wording input into the AI tool), and (3) the full output (a copy of the complete output from the AI tool.)"
 
-Actions: keep a log of every prompt and output while working; add the section before submission; verify every AI-produced number and reference by hand.
+Actions: keep a log of every prompt and output while working; set
+`\aiusedtrue` in `config.tex` so the section compiles; verify every
+AI-produced number and reference by hand.
+
+Scale of the problem: of the 16 gold papers in 2025, four disclose AI use and
+only one — 2025-B-765, appendix B — supplies the verbatim queries and the full
+outputs; it spends five pages on them. Disclosure done properly is rare, which
+makes a clean one an easy way to look more careful than the field.
 
 ## 5. Submission format
 

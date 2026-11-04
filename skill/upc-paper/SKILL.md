@@ -54,7 +54,7 @@ make pdf
 5. **Summary ≤ 300 words**, and it must state the work done, the model assumptions, the answers to the questions, the final numbers and the conclusions.
 6. **A reference list and in-text citations** are both required. Never invent a reference.
 7. **Numbers carry units and sensible significant figures; every graph has labelled axes.**
-8. **If generative AI was used**, the paper must end with a section "Report on the Use of AI" listing the system, the verbatim query, and the full output.
+8. **If generative AI was used**, the paper must end with a section "Report on the Use of AI" listing the system, the verbatim query, and the full output. In the template this section is compiled only when `\aiusedtrue` is set in `config.tex`; if no such tool was used, leave it false and say nothing.
 9. **Filename is `<team><problem>.pdf`** (e.g. `778A.pdf`).
 
 ## Working defaults

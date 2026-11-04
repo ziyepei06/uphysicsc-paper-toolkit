@@ -40,6 +40,10 @@
 \usepackage{enumitem}
 \setlist{itemsep=2pt,topsep=3pt,parsep=0pt}
 \usepackage{listings}
+\lstdefinestyle{aiquote}{basicstyle=\ttfamily\footnotesize,breaklines=true,
+        frame=leftline,framerule=0.4pt,columns=fullflexible,
+        showstringspaces=false,xleftmargin=1.2em,framesep=4pt,
+        aboveskip=0.4em,belowskip=0.8em}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,frame=single,
         numbers=left,numberstyle=\tiny,columns=fullflexible}
 \usepackage{xcolor}
@@ -62,6 +66,11 @@
 \newcommand{\teamnum}{000}          % <-- your team number
 \newcommand{\problemltr}{A}         % <-- A or B
 \newcommand{\papertitle}{Full Paper Title Written in Title Case}
+
+% Set \aiusedtrue if a generative AI tool influenced text, code, figures or
+% analysis; the "Report on the Use of AI" then appears at the end.
+\newif\ifaiused
+\aiusedfalse
 
 % ---------- macros (keep consistent notation across the team) --------
 \newcommand{\dd}{\mathrm{d}}
@@ -246,10 +255,30 @@ def blowdown(p0=101325.0, V=628.0, A=7.85e-5, gamma=1.4, dt=1e-3):
     ...
 \end{lstlisting}
 
-% ---- required only if generative AI was used (see official rule 5) ---
-% \section*{Report on the Use of AI}
-% \addcontentsline{toc}{section}{Report on the Use of AI}
-% System used: <name/version>. Query (verbatim): \texttt{"..."}.
-% Full output: \begin{quote}...\end{quote}
+% ---- required only if generative AI was used (official rule 5) ------
+% The full version of this section, with a systems table, a query table and
+% one block per output, lives in templates/project/sections/11-ai-report.tex.
+\ifaiused
+\section*{Report on the Use of AI}
+\addcontentsline{toc}{section}{Report on the Use of AI}
+
+\noindent\textbf{Systems:} \verb|GPT-5| (OpenAI, 2025-10), web chat.
+
+\subsection*{Work carried out without AI}
+State here what the team did itself; see the project template for the
+wording used in gold papers.
+
+\subsection*{Queries (verbatim)}
+\paragraph{Query 1.}
+\begin{lstlisting}[style=aiquote]
+<paste the exact text typed into the tool>
+\end{lstlisting}
+
+\subsection*{Outputs (complete)}
+\paragraph{Output 1.}
+\begin{lstlisting}[style=aiquote]
+<paste the complete output>
+\end{lstlisting}
+\fi
 
 \end{document}

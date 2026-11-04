@@ -28,3 +28,7 @@ __pycache__/
 # editor
 .vscode/
 .idea/
+
+# compiled examples inside the skill bundle (the template ships 000A.pdf)
+skill/upc-paper/templates/upc-paper.pdf
+skill/upc-paper/templates/project/main.pdf

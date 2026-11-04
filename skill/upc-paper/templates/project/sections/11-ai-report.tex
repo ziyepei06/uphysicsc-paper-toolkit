@@ -1,40 +1,117 @@
 %% =====================================================================
-%%  11 Report on the Use of AI -- ONLY if generative AI was used
+%%  11  Report on the Use of AI
 %% =====================================================================
-%%  Official rule: if generative AI tools were used, the paper must end
-%%  with a section titled "Report on the Use of AI" that names the system,
-%%  quotes the prompts verbatim, and includes the outputs in full.
+%%  Compiled only when config.tex sets \aiusedtrue. If no generative AI
+%%  touched the paper, leave the switch false: the section then does not
+%%  exist at all, which is the correct state. Never add a paragraph that
+%%  merely says "no AI was used".
 %%
-%%  How to use this file
-%%   1. Keep the section commented out while you are drafting, so it does
-%%      not pollute the page count or the summary.
-%%   2. Before submission, uncomment it and fill in every entry: one block
-%%      per assistant, per session, or per task -- whatever the rule in
-%%      your year's statement requires.
-%%   3. Never claim "AI was only used for language editing" if it drafted
-%%      equations or code; the report is checked against the paper.
+%%  Official rule (contestrules.html): if a team uses a generative AI tool
+%%  in writing the paper, the end of the paper must contain a section
+%%  "Report on the Use of AI" stating (1) what system was used, (2) the
+%%  query -- the exact wording input into the tool, (3) the full output.
+%%  All three are mandatory once such a tool was used.
 %%
-%%  Delete this file from main.tex entirely if no AI was used.
+%%  This file follows the order the rule asks for:
+%%    11.1  systems (who made it, version, date, interface, used for)
+%%    11.2  what was done without AI
+%%    11.3  numbered queries, each reproduced verbatim
+%%    11.4  the complete outputs, one block per query
+%%  Keep the numbering aligned: Query 3 must appear as Output 3.
+%%
+%%  Cost: outputs are long. Team 765 (2025, gold) spent five pages on
+%%  them. Budget for it, and keep the log short by not asking an assistant
+%%  for anything you can work out yourself.
+%%
+%%  Short-use variant: if AI only polished the English or fixed LaTeX, the
+%%  rule still asks for the queries and the outputs, but one short query
+%%  and one short output satisfy it. Do not write "AI was used only for
+%%  language editing" and stop there.
 %% =====================================================================
 
-% \section*{Report on the Use of AI}
-% \addcontentsline{toc}{section}{Report on the Use of AI}
-%
-% \noindent\textbf{System:} <model name and version, e.g. GPT-4o, 2025-06>\\
-% \textbf{Use:} <what it was used for: outlining, LaTeX debugging, language
-% editing, code generation>.
-%
-% \medskip
-% \noindent\textbf{Prompt (verbatim):}
-% \begin{quote}\ttfamily
-% <paste the exact prompt here>
-% \end{quote}
-%
-% \noindent\textbf{Output (full):}
-% \begin{quote}\ttfamily\small
-% <paste the complete output here, unedited>
-% \end{quote}
-%
-% \medskip
-% Repeat the prompt/output block for every interaction that influenced
-% the paper. Do not summarise: the rule asks for the outputs in full.
+\section{Report on the Use of AI}
+\label{sec:ai-report}
+
+Generative AI tools were used while preparing this paper. Every use is
+disclosed below: the systems (Sec.~\ref{sec:ai-systems}), the work carried
+out without them (Sec.~\ref{sec:ai-noai}), the exact queries
+(Sec.~\ref{sec:ai-queries}) and the complete outputs
+(Sec.~\ref{sec:ai-outputs}). No equation, number or sentence taken from an
+AI output appears in this paper without independent verification.
+
+% ---------------------------------------------------------------------
+\subsection{Systems used}
+\label{sec:ai-systems}
+
+\begin{table}[H]
+  \centering
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \caption{AI systems used, with version and date of access. List every
+  system that received text, code or data from the team.}
+  \label{tab:ai-systems}
+  \begin{tabular}{@{}l l l l p{0.26\textwidth}@{}}
+    \toprule
+    System & Developer & Version / date & Interface & Used for \\
+    \midrule
+    \verb|GPT-5|             & OpenAI    & \verb|2025-10| & web chat & background reading \\
+    \verb|Claude 4.5 Sonnet| & Anthropic & \verb|2025-10| & web chat & LaTeX debugging    \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ---------------------------------------------------------------------
+\subsection{Work carried out without AI}
+\label{sec:ai-noai}
+
+% Replace this paragraph with your own statement.
+State plainly here what the team did itself: the model and its assumptions,
+the derivation of the governing equations, the numerical scheme, the choice
+of parameters, the figures and the conclusions. Name the parts an assistant
+never touched, and do not overclaim. If an assistant proposed an equation or
+a line of code that survived into the paper, that interaction belongs in
+Table~\ref{tab:ai-queries} even when you re-derived or rewrote it.
+
+% ---------------------------------------------------------------------
+\subsection{Queries}
+\label{sec:ai-queries}
+
+\begin{table}[H]
+  \centering
+  \small
+  \caption{Queries in the order they were made. The full wording of each is
+  reproduced verbatim below the table.}
+  \label{tab:ai-queries}
+  \begin{tabular}{@{}c l l p{0.40\textwidth}@{}}
+    \toprule
+    \# & System & Purpose & Query (opening words) \\
+    \midrule
+    1 & \verb|GPT-5|  & background & \verb|Explain the ODE45 event option| \\
+    2 & \verb|Claude| & LaTeX      & \verb|Why does siunitx reject --|     \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Query 1.} Verbatim input, typographical errors included.
+\begin{lstlisting}[style=aiquote]
+<paste the exact text that was typed into the tool>
+\end{lstlisting}
+
+\paragraph{Query 2.} Verbatim input, typographical errors included.
+\begin{lstlisting}[style=aiquote]
+<paste the exact text that was typed into the tool>
+\end{lstlisting}
+
+% ---------------------------------------------------------------------
+\subsection{Outputs}
+\label{sec:ai-outputs}
+
+\paragraph{Output 1.} Complete response to Query 1, unedited.
+\begin{lstlisting}[style=aiquote]
+<paste the complete output, including its mistakes>
+\end{lstlisting}
+
+\paragraph{Output 2.} Complete response to Query 2, unedited.
+\begin{lstlisting}[style=aiquote]
+<paste the complete output, including its mistakes>
+\end{lstlisting}

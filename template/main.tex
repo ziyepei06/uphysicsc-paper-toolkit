@@ -45,6 +45,10 @@
 \bibliography{refs}
 
 \input{sections/10-appendix}
-\input{sections/11-ai-report}
+
+% The AI report exists only if config.tex sets \aiusedtrue.
+\ifaiused
+  \input{sections/11-ai-report}
+\fi
 
 \end{document}
