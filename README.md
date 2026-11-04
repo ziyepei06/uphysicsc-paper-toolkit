@@ -4,7 +4,6 @@
 > two problems, one paper). It is **not** the Universitat Politècnica de Catalunya,
 > which owns most of the other `UPC-*` LaTeX repositories on GitHub.
 
-![University Physics Competition — paper toolkit](docs/cover.png)
 
 Everything a University Physics Competition team needs to write the paper:
 a **LaTeX project template** that already compiles, and an **agent skill**
@@ -25,7 +24,7 @@ the assumptions, the answers, and the uncertainty in the first two minutes.
 |---|---|
 | `template/` | Multi-file LaTeX project: compiles to 11 pages, passes its own compliance checks, carries a complete worked example |
 | `skill/upc-paper/` | Agent skill: `SKILL.md`, 10 reference documents, a submission checklist, and the same checker scripts |
-| `papers/` | The 74 gold-medal papers themselves, 2010–2025 (141 MB), with an index |
+| `papers/` | Index of the 74 gold-medal papers, 2010–2025, linking to the copies the organisers publish. The PDFs are **not** redistributed here — see [`papers/NOTICE.md`](papers/NOTICE.md) |
 | `docs/` | Rendered pages used in this README |
 
 `template/` is the same project as `skill/upc-paper/templates/project`, with
@@ -35,14 +34,12 @@ copy the change to the other — `git diff` between the two directories is
 short.
 
 No git? The [latest release](https://github.com/ziyepei06/uphysicsc-paper-toolkit/releases/latest)
-has three archives: the skill, the template, and the 74 papers.
+has two archives: the skill and the template.
 
-Clone size is about 145 MB, almost all of it `papers/`. If you only want the
-template and the skill:
+The clone is a couple of megabytes — the papers are links, not files:
 
 ```bash
-git clone --filter=blob:none --sparse https://github.com/ziyepei06/uphysicsc-paper-toolkit.git
-cd uphysicsc-paper-toolkit && git sparse-checkout set skill template
+git clone https://github.com/ziyepei06/uphysicsc-paper-toolkit.git
 ```
 
 ## The template
@@ -144,6 +141,8 @@ silently disagree.
 
 ## Licence and credits
 
-Code and text: MIT, © 2026 Ziye Pei (see `LICENSE`). The 74 papers themselves are not
-included and remain the property of their authors; the statistics and the
-prose in `references/` are derived from reading them.
+Code and text: MIT, © 2026 Ziye Pei (see `LICENSE`). The 74 papers are not
+included and remain the property of their authors: [`papers/README.md`](papers/README.md)
+links to the official copies at uphysicsc.com rather than hosting them, and
+[`papers/NOTICE.md`](papers/NOTICE.md) says why. The statistics and the prose in
+`references/` are ours, derived from reading those papers.
