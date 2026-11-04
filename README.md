@@ -25,7 +25,6 @@ the assumptions, the answers, and the uncertainty in the first two minutes.
 | `skill/upc-paper/` | Agent skill: `SKILL.md`, 10 reference documents, a submission checklist, and the same checker scripts |
 | `papers/` | The 74 gold-medal papers themselves, 2010–2025 (141 MB), with an index |
 | `docs/` | Rendered pages used in this README |
-| `install.sh` | Copies the skill into `~/.claude/skills` and/or `~/.agents/skills` |
 
 `template/` is the same project as `skill/upc-paper/templates/project`, with
 its own `tools/` and a Makefile that does not depend on the skill being
@@ -85,13 +84,23 @@ appearance, three-line tables, and an answer box for each question.
 
 ## The skill
 
+A skill is a directory an agent reads, so installing it is a copy:
+
 ```bash
-./install.sh                 # both agent directories, if they exist
-./install.sh --target ~/.claude/skills
+mkdir -p ~/.claude/skills
+
+# from a clone: symlink, so git pull updates the skill as well
+ln -sfn "$PWD/skill/upc-paper" ~/.claude/skills/upc-paper
+
+# from the release archive: copy, replacing an earlier install
+rm -rf ~/.claude/skills/upc-paper && cp -R upc-paper ~/.claude/skills/
 ```
 
-Then ask the agent for help and it has the rules in hand. The skill is
-deliberately opinionated:
+Codex and other agents read `~/.agents/skills/` instead; the command is the
+same. Once the directory is there, the agent picks it up and has the rules in
+hand.
+
+The skill is deliberately opinionated:
 
 | File | Contents |
 |---|---|
