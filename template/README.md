@@ -1,6 +1,6 @@
 # UPC paper template — standalone LaTeX project
 
-A working paper, not an empty shell: it compiles to 11 pages, passes the
+A working paper, not an empty shell: it compiles to 13 pages, passes the
 built-in checks, and carries a complete worked example (a hull-breach
 blow-down problem) whose numbers come from the code in `code/`. Replace
 the content, keep the structure. Everything needed is inside this folder —
@@ -14,7 +14,7 @@ make                # 编译并跑合规检查（队号、摘要词数、参考�
 make pdf            # 生成交稿文件名，如 000A.pdf
 ```
 
-目录里已经带了一份编译好的 `000A.pdf`（11 页）可以先看效果；重新编译会覆盖
+目录里已经带了一份编译好的 `000A.pdf`（14 页，含 AI 使用报告）可以先看效果；重新编译会覆盖
 `main.pdf`，`make pdf` 会生成 `000A.pdf`。
 
 改三处即可开写：`config.tex`（队号/题号/标题）、`sections/00-frontmatter.tex`

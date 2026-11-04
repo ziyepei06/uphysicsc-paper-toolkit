@@ -18,9 +18,9 @@
 
 | 路径 | 是什么 |
 |---|---|
-| `template/` | 多文件 LaTeX 工程：编译出 11 页，能通过自带的合规检查，内含一份完整的示例论文 |
+| `template/` | 多文件 LaTeX 工程：编译出 13 页，能通过自带的合规检查，内含一份完整的示例论文 |
 | `skill/upc-paper/` | agent skill：`SKILL.md`、10 份参考文档、一份交稿检查清单，以及同一套检查脚本 |
-| `papers/` | 74 篇金牌论文（2010–2025）的索引，链到主办方自己发布的文件。这里的 PDF **不再分发**——见 [`papers/NOTICE.md`](papers/NOTICE.md) |
+| `papers/` | 74 篇金牌论文（2010–2025）：主办方发布的 PDF 原件，另附一份逐篇链到官方文件的索引。版权归各篇作者——见 [`papers/NOTICE.md`](papers/NOTICE.md) |
 | `docs/` | 本 README 用到的页面截图 |
 
 `template/` 和 `skill/upc-paper/templates/project` 是同一套工程：前者自带 `tools/`，
@@ -28,9 +28,9 @@ Makefile 不依赖技能放在哪里；技能保留自己的副本，才能独�
 改动同步到另一边——两个目录之间的 `git diff` 很短。
 
 不想用 git？[最新 release](https://github.com/ziyepei06/uphysicsc-paper-toolkit/releases/latest)
-提供两个压缩包：技能和模板。
+提供三个压缩包：技能、模板和 74 篇论文。
 
-克隆下来只有几 MB——论文是链接，不是文件：
+clone 下来约 220 MB；工作区就有 120 MB，几乎全是那 74 篇论文：
 
 ```bash
 git clone https://github.com/ziyepei06/uphysicsc-paper-toolkit.git
@@ -107,7 +107,7 @@ template/
 | 参考文献 | 8 | 4–11 | 0–32 |
 | 摘要词数 | 240 | 213–279 | 101–373 |
 
-56 篇单栏、18 篇双栏；44 篇 A4、29 篇 US Letter；74 篇里 72 篇用数字引用。30 篇有
+56 篇单栏、18 篇双栏；45 篇 A4、29 篇 US Letter；74 篇里 72 篇用数字引用。30 篇有
 明确的符号表，66 篇明确写出假设，49 篇列出优点，38 篇列出不足，51 篇有附录。
 
 这些统计就是模板长成现在这样的原因，也是技能里那句话的来由：一篇把问题全部回答完
@@ -125,7 +125,12 @@ template/
 
 ## 许可与致谢
 
-代码与文字：MIT，© 2026 Ziye Pei（见 `LICENSE`）。74 篇论文不在仓库里，版权属于
-各自作者：[`papers/README.md`](papers/README.md) 链到 uphysicsc.com 上的官方文件，
-而不是托管它们，原因见 [`papers/NOTICE.md`](papers/NOTICE.md)。`references/` 里的
-统计与文字是我们的，来自阅读这些论文。
+代码、模板、技能与文字：MIT，© 2026 Ziye Pei（见 `LICENSE`）。
+
+`papers/` 里的 74 篇金牌论文不属于我们，上面的许可也不覆盖它们。它们是获奖队伍的
+作品，由 University Physics Competition 发布在 [uphysicsc.com](http://uphysicsc.com)。
+仓库里的副本未经改动，是为了能离线阅读；[`papers/README.md`](papers/README.md) 的每
+一行同时也链到主办方发布的官方文件。版权归各篇作者所有——如果其中一篇是你写的、
+希望撤下，开一个 issue 即可，收到就删。
+
+`skill/upc-paper/references/` 里的统计与文字是我们的，来自阅读这些论文。

@@ -21,9 +21,9 @@ the assumptions, the answers, and the uncertainty in the first two minutes.
 
 | Path | What it is |
 |---|---|
-| `template/` | Multi-file LaTeX project: compiles to 11 pages, passes its own compliance checks, carries a complete worked example |
+| `template/` | Multi-file LaTeX project: compiles to 13 pages, passes its own compliance checks, carries a complete worked example |
 | `skill/upc-paper/` | Agent skill: `SKILL.md`, 10 reference documents, a submission checklist, and the same checker scripts |
-| `papers/` | Index of the 74 gold-medal papers, 2010–2025, linking to the copies the organisers publish. The PDFs are **not** redistributed here — see [`papers/NOTICE.md`](papers/NOTICE.md) |
+| `papers/` | The 74 gold-medal papers, 2010–2025: the organisers' PDFs, plus an index linking each one to its official copy. Copyright stays with the authors — see [`papers/NOTICE.md`](papers/NOTICE.md) |
 | `docs/` | Rendered pages used in this README |
 
 `template/` is the same project as `skill/upc-paper/templates/project`, with
@@ -33,9 +33,10 @@ copy the change to the other — `git diff` between the two directories is
 short.
 
 No git? The [latest release](https://github.com/ziyepei06/uphysicsc-paper-toolkit/releases/latest)
-has two archives: the skill and the template.
+has three archives: the skill, the template, and the 74 papers.
 
-The clone is a couple of megabytes — the papers are links, not files:
+Cloning pulls about 220 MB; the working tree alone is 120 MB, almost all of it
+the 74 papers:
 
 ```bash
 git clone https://github.com/ziyepei06/uphysicsc-paper-toolkit.git
@@ -116,7 +117,7 @@ Measured with PyMuPDF over all papers, 2010–2025:
 | References | 8 | 4–11 | 0–32 |
 | Summary words | 240 | 213–279 | 101–373 |
 
-56 are single column, 18 two-column; 44 are A4 and 29 US Letter; 72 of 74
+56 are single column, 18 two-column; 45 are A4 and 29 US Letter; 72 of 74
 cite numerically. 30 have an explicit notation table, 66 state assumptions
 explicitly, 49 list strengths, 38 list weaknesses, 51 have an appendix.
 
@@ -140,8 +141,15 @@ silently disagree.
 
 ## Licence and credits
 
-Code and text: MIT, © 2026 Ziye Pei (see `LICENSE`). The 74 papers are not
-included and remain the property of their authors: [`papers/README.md`](papers/README.md)
-links to the official copies at uphysicsc.com rather than hosting them, and
-[`papers/NOTICE.md`](papers/NOTICE.md) says why. The statistics and the prose in
-`references/` are ours, derived from reading those papers.
+Code, template, skill, and prose: MIT, © 2026 Ziye Pei (see `LICENSE`).
+
+The 74 gold-medal PDFs in `papers/` are not ours, and that licence does not cover
+them. They were written by the teams that won and are published by the University
+Physics Competition at [uphysicsc.com](http://uphysicsc.com). The copies here are
+unmodified and kept so the papers can be read offline; every row of
+[`papers/README.md`](papers/README.md) also links to the file the organisers
+publish. Copyright stays with each paper's authors — if you wrote one and want it
+removed, open an issue and it goes.
+
+The statistics and the prose in `skill/upc-paper/references/` are ours, derived by
+reading those papers.

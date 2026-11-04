@@ -54,7 +54,7 @@ upc-paper/
 ├── SKILL.md                        entry point: rules, quick start, file map
 ├── README.md                       this file
 ├── templates/
-│   ├── project/                    full multi-file paper, compiles as-is (11 pages)
+│   ├── project/                    full multi-file paper, compiles as-is (13 pages)
 │   │   ├── main.tex, config.tex, preamble.tex, refs.bib, Makefile
 │   │   ├── sections/00–11          every section scaffolded, with %% GUIDE comments
 │   │   ├── code/blowdown.py        the model quoted in the appendix

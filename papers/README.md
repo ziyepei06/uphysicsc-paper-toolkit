@@ -1,13 +1,12 @@
-# Gold-medal papers, 2010–2025 — index
+# Gold-medal papers, 2010–2025
 
-The 74 papers that won gold at the University Physics Competition, with links to
-the copies the organisers publish themselves at
-[uphysicsc.com](http://uphysicsc.com).
+The 74 papers that won gold at the University Physics Competition, 2010–2025.
 
-**This repository does not host the PDFs.** They are the authors' copyright, not
-ours, and redistributing them invites a takedown that would take the template and
-the skill down with them. Every row below links to the official file, which is one
-click away and always current. See [NOTICE.md](NOTICE.md).
+The PDFs in the year folders are the organisers' files, unmodified, so the papers
+can be read and measured offline; every row below also links to the copy published
+at [uphysicsc.com](http://uphysicsc.com), which stays current. The papers are the
+authors' copyright, not ours, and this repository's MIT licence does not cover
+them — see [NOTICE.md](NOTICE.md).
 
 Counts by year: 2010 (2), 2011 (2), 2012 (2), 2013 (3), 2014 (2), 2015 (2),
 2016 (3), 2017 (4), 2018 (5), 2019 (5), 2020 (6), 2021 (6), 2022 (7), 2023 (9),
