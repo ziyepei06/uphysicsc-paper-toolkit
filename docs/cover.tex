@@ -27,12 +27,12 @@
     at (1.16,6.38) {\fontsize{7.2}{9}\selectfont 48 hours \textperiodcentered\ two problems \textperiodcentered\ one paper};
 
   \node[anchor=west, text=ink, inner sep=0pt]
-    at (1.13,5.50) {\fontsize{25}{29}\selectfont\bfseries UPC Paper Toolkit};
+    at (1.13,5.50) {\fontsize{21.5}{26}\selectfont\bfseries UPC Paper Toolkit};
 
-  \draw[rule, line width=0.5pt] (1.16,4.86) -- (7.05,4.86);
+  \draw[rule, line width=0.5pt] (1.16,4.76) -- (7.05,4.76);
 
   \node[anchor=north west, align=left, text=ink, inner sep=0pt, text width=5.85cm]
-    at (1.16,4.66) {\fontsize{9.8}{14}\selectfont\raggedright
+    at (1.16,4.54) {\fontsize{9.8}{14}\selectfont\raggedright
     A \LaTeX{} project template that already compiles, and an agent skill
     distilled from the 74 gold-medal papers: the rules, the structure, and
     the judgement calls the judges reward.\par};
@@ -43,17 +43,15 @@
   \node[anchor=north west, text=muted, inner sep=0pt]
     at (1.16,1.20) {\fontsize{7}{9.6}\selectfont 2010--2025 \textperiodcentered\ MIT \textperiodcentered\ \LaTeX\, + Python};
 
-  % ---- page, tilted and sticking out of the sheet ---------------------
-  \begin{scope}[rotate around={-4.5:(12.74,4.05)}]
-    \fill[black, opacity=0.06] (9.98,0.72) rectangle (15.66,7.36);
-    \fill[card] (9.90,0.80) rectangle (15.58,7.30);
-    \begin{scope}
-      \clip (9.90,0.80) rectangle (15.58,7.30);
-      \node[anchor=north west, inner sep=0pt] at (10.11,7.10)
-        {\includegraphics[page=1, width=5.20cm]{../template/000A.pdf}};
-    \end{scope}
-    \draw[rule, line width=0.4pt] (9.90,0.80) rectangle (15.58,7.30);
+  % ---- page preview, inside the sheet --------------------------------
+  \fill[black, opacity=0.06] (9.56,0.55) rectangle (14.58,6.99);
+  \fill[card] (9.48,0.63) rectangle (14.50,7.07);
+  \begin{scope}
+    \clip (9.48,0.63) rectangle (14.50,7.07);
+    \node[anchor=north west, inner sep=0pt] at (9.58,6.97)
+      {\includegraphics[page=1, width=4.82cm]{../template/000A.pdf}};
   \end{scope}
+  \draw[rule, line width=0.4pt] (9.48,0.63) rectangle (14.50,7.07);
 \end{scope}
 \end{tikzpicture}
 \end{document}
