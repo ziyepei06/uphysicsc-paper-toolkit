@@ -6,6 +6,8 @@
 > two problems, one paper). It is **not** the Universitat Politècnica de Catalunya,
 > which owns most of the other `UPC-*` LaTeX repositories on GitHub.
 
+**中文**：国际物理竞赛（University Physics Competition，UPC）论文工具包——一套开箱即编译的 LaTeX 论文模板，加一份从 74 篇金牌论文里提炼出来的 agent skill（写作结构、排版规范、评分标准、48 小时流程、交稿前检查）。搜索关键词：国际物理竞赛、物理竞赛论文模板、UPC 论文排版、IEEE 风格竞赛论文。
+
 Everything a University Physics Competition team needs to write the paper:
 a **LaTeX project template** that already compiles, and an **agent skill**
 that carries the rules, the structure, and the judgement calls — both
