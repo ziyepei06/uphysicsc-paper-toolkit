@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Count the words in the Summary and check the 300-word limit.
+"""Count the words in the Summary/Abstract and check the 300-word limit.
 
 Usage:
     python3 scripts/count_summary.py paper.pdf            # count on page 1
@@ -87,7 +87,7 @@ def from_pdf(path: str) -> str:
     doc = pymupdf.open(path)
     page = doc[0]
     txt = page.get_text()
-    m = re.search(r"(?im)^\s*summary\s*$", txt)
+    m = re.search(r"(?im)^\s*(?:summary|abstract)\s*$", txt)
     body = txt[m.end():] if m else txt
     # drop a running header on page 1 (team number / problem letter)
     lines = [ln for ln in body.splitlines()

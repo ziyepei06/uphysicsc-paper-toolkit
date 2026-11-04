@@ -10,7 +10,7 @@ no external skill, no extra paths.
 
 ```bash
 cd UPC-LaTeX-Template
-make                # 编译并跑合规检查（队号、Summary 词数、参考文献等）
+make                # 编译并跑合规检查（队号、摘要词数、参考文献等）
 make pdf            # 生成交稿文件名，如 000A.pdf
 ```
 
@@ -18,7 +18,7 @@ make pdf            # 生成交稿文件名，如 000A.pdf
 `main.pdf`，`make pdf` 会生成 `000A.pdf`。
 
 改三处即可开写：`config.tex`（队号/题号/标题）、`sections/00-frontmatter.tex`
-（Summary）、`sections/01`–`09`（正文）。所有章节已按金牌论文的结构排好，
+（Abstract/Summary）、`sections/01`–`09`（正文）。所有章节已按金牌论文的结构排好，
 每节开头有 `%% GUIDE` 注释说明该写什么。
 
 ## Quick start
