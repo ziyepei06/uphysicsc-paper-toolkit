@@ -23,6 +23,7 @@ the assumptions, the answers, and the uncertainty in the first two minutes.
 |---|---|
 | `template/` | Multi-file LaTeX project: compiles to 11 pages, passes its own compliance checks, carries a complete worked example |
 | `skill/upc-paper/` | Agent skill: `SKILL.md`, 10 reference documents, a submission checklist, and the same checker scripts |
+| `papers/` | The 74 gold-medal papers themselves, 2010–2025 (141 MB), with an index |
 | `docs/` | Rendered pages used in this README |
 | `install.sh` | Copies the skill into `~/.claude/skills` and/or `~/.agents/skills` |
 
@@ -31,6 +32,14 @@ its own `tools/` and a Makefile that does not depend on the skill being
 installed; the skill keeps its copy so it works on its own. If you edit one,
 copy the change to the other — `git diff` between the two directories is
 short.
+
+Clone size is about 145 MB, almost all of it `papers/`. If you only want the
+template and the skill:
+
+```bash
+git clone --filter=blob:none --sparse https://github.com/ziyepei06/uphysicsc-paper-toolkit.git
+cd uphysicsc-paper-toolkit && git sparse-checkout set skill template
+```
 
 ## The template
 
