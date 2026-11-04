@@ -33,6 +33,9 @@ installed; the skill keeps its copy so it works on its own. If you edit one,
 copy the change to the other — `git diff` between the two directories is
 short.
 
+No git? The [v1.0.0 release](https://github.com/ziyepei06/uphysicsc-paper-toolkit/releases/tag/v1.0.0)
+has three archives: the skill, the template, and the 74 papers.
+
 Clone size is about 145 MB, almost all of it `papers/`. If you only want the
 template and the skill:
 
