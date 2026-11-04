@@ -7,8 +7,8 @@ v1.0.0 until it was fixed by hand).
 
 | Asset | Built from | Size |
 |---|---|---|
-| `upc-latex-template.zip` | `template/` (without LaTeX by-products) | ~400 KB |
-| `upc-paper-skill.zip` | `skill/upc-paper/` | ~120 KB |
+| `upc-latex-template.zip` | `template/` (without LaTeX by-products) | ~500 KB |
+| `upc-paper-skill.zip` | `skill/upc-paper/` (no compiled PDFs) | ~125 KB |
 | `upc-papers-2010-2025.zip` | `papers/` | ~96 MB |
 
 ## Build the two small archives
@@ -42,7 +42,8 @@ with state `uploaded`, and that `/releases/latest` resolves to the new tag.
 
 ## Before tagging
 
-- `cd template && make clean && make` — `RESULT: PASS`, 11 pages, summary 200/300.
+- `cd template && make clean && make` — `RESULT: PASS`, 13 pages, summary 200/300;
+  `make demo` gives the 14-page sample with the AI appendix.
 - Flip `\aiusedtrue` in `config.tex`, `make`, confirm the AI section appears,
   then flip it back.
 - Unpack both archives into a clean directory, build there, and run
