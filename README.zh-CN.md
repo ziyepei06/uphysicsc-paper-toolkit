@@ -4,10 +4,6 @@
 
 ![University Physics Competition — paper toolkit](docs/cover.png)
 
-> 这里的 "UPC" 指 [University Physics Competition](http://uphysicsc.com)（48 小时、
-> 两道题、每题一篇论文），**不是**加泰罗尼亚理工大学（Universitat Politècnica de
-> Catalunya）——GitHub 上大多数 `UPC-*` 的 LaTeX 仓库属于后者。
-
 一支 University Physics Competition 参赛队写好论文所需的一切：一份**已经能编译**
 的 LaTeX 工程模板，以及一份 **agent skill（智能体技能）**——规则、结构、以及真正
 影响判分的取舍，都写在里面；两者提炼自 2010–2025 年发表在
