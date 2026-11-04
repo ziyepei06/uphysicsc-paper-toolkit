@@ -138,6 +138,6 @@ silently disagree.
 
 ## Licence and credits
 
-Code and text: MIT (see `LICENSE`). The 74 papers themselves are not
+Code and text: MIT, © 2026 Ziye Pei (see `LICENSE`). The 74 papers themselves are not
 included and remain the property of their authors; the statistics and the
 prose in `references/` are derived from reading them.
