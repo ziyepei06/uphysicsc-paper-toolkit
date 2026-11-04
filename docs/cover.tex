@@ -14,7 +14,7 @@
 \clip (0,0) rectangle (16,8);
 \fill[desk] (0,0) rectangle (16,8);
 
-\begin{scope}[rotate around={-3.4:(8,4)}]
+\begin{scope}
   % ---- the sheet ------------------------------------------------------
   \fill[black, opacity=0.05] (0.52,0.10) rectangle (15.08,7.28);
   \fill[black, opacity=0.07] (0.44,0.18) rectangle (15.08,7.36);
@@ -43,15 +43,17 @@
   \node[anchor=north west, text=muted, inner sep=0pt]
     at (1.16,1.20) {\fontsize{7}{9.6}\selectfont 2010--2025 \textperiodcentered\ MIT \textperiodcentered\ \LaTeX\, + Python};
 
-  % ---- page, sticking out of the sheet --------------------------------
-  \fill[black, opacity=0.06] (9.98,0.72) rectangle (15.66,7.36);
-  \fill[card] (9.90,0.80) rectangle (15.58,7.30);
-  \begin{scope}
-    \clip (9.90,0.80) rectangle (15.58,7.30);
-    \node[anchor=north west, inner sep=0pt] at (10.11,7.10)
-      {\includegraphics[page=1, width=5.20cm]{../template/000A.pdf}};
+  % ---- page, tilted and sticking out of the sheet ---------------------
+  \begin{scope}[rotate around={-4.5:(12.74,4.05)}]
+    \fill[black, opacity=0.06] (9.98,0.72) rectangle (15.66,7.36);
+    \fill[card] (9.90,0.80) rectangle (15.58,7.30);
+    \begin{scope}
+      \clip (9.90,0.80) rectangle (15.58,7.30);
+      \node[anchor=north west, inner sep=0pt] at (10.11,7.10)
+        {\includegraphics[page=1, width=5.20cm]{../template/000A.pdf}};
+    \end{scope}
+    \draw[rule, line width=0.4pt] (9.90,0.80) rectangle (15.58,7.30);
   \end{scope}
-  \draw[rule, line width=0.4pt] (9.90,0.80) rectangle (15.58,7.30);
 \end{scope}
 \end{tikzpicture}
 \end{document}
